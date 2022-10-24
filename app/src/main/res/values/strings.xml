@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ProjectRelief</string>
+    <string name="welcome_text">Welcome back!</string>
 </resources>
