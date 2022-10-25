@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ProjectRelief</string>
     <string name="welcome_text">Welcome back!</string>
+    <string name="hey_you_leveled_up_good_job">Hey!You leveled up, good job!</string>
 </resources>

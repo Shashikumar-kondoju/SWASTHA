@@ -15,9 +15,20 @@
         android:textColor="@color/black"
         android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
+        android:id="@+id/txtWelcome"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hey_you_leveled_up_good_job"
+        android:layout_below="@id/txtWelcome"
+        android:layout_marginStart="40dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        />
 
 </RelativeLayout>
