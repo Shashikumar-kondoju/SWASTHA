@@ -29,6 +29,16 @@
         android:layout_marginStart="40dp"
         android:textColor="@color/black"
         android:layout_marginTop="10dp"
+        android:id="@+id/txtView"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hey_you_leveled_up_good_job"
+        android:layout_below="@id/txtView"
+        android:layout_marginStart="40dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
         />
 
 </RelativeLayout>
