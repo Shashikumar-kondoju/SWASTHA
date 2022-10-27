@@ -2,4 +2,9 @@
     <string name="app_name">ProjectRelief</string>
     <string name="welcome_text">Welcome back!</string>
     <string name="hey_you_leveled_up_good_job">Hey!You leveled up, good job!</string>
+    <string name="home">Home</string>
+    <string name="yoga_asanas">Yoga asanas</string>
+    <string name="healing_music">Healing music</string>
+    <string name="about_us">About us</string>
+    <string name="rise_and_grind">its Yoga Time!!</string>
 </resources>
