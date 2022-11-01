@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -46,20 +47,49 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
-        MenuItem prevItemChecked = null;
+        final MenuItem[] prevItemChecked = {null};
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-
-                return false;
+                if(prevItemChecked[0] !=null){
+                    prevItemChecked[0].setChecked(false);
+                }
+                item.setCheckable(true);
+                item.setChecked(true);
+                prevItemChecked[0] = item;
+                if(item.getItemId()==R.id.nav_home){
+                    openHome();
+                    drawerLayout.closeDrawers();
+                }else if(item.getItemId()==R.id.nav_yoga){
+                    getSupportFragmentManager().beginTransaction().add(R.id.frame,YogaFragment.class,null);
+                    getSupportFragmentManager().beginTransaction().commit();
+                    if(getSupportActionBar()!=null){
+                        getSupportActionBar().setTitle("Yoga Information");
+                    }
+                    drawerLayout.closeDrawers();
+                }else if(item.getItemId()==R.id.nav_music){
+                    getSupportFragmentManager().beginTransaction().add(R.id.frame,HealingMusicFragment.class,null);
+                    getSupportFragmentManager().beginTransaction().commit();
+                    if(getSupportActionBar()!=null){
+                        getSupportActionBar().setTitle("Healing Music");
+                    }
+                    drawerLayout.closeDrawers();
+                }else if(item.getItemId()==R.id.nav_about_us){
+                    getSupportFragmentManager().beginTransaction().add(R.id.frame,AboutUsFragment.class,null);
+                    getSupportFragmentManager().beginTransaction().commit();
+                    if(getSupportActionBar()!=null){
+                        getSupportActionBar().setTitle("About Us");
+                    }
+                    drawerLayout.closeDrawers();
+                }
+                return true;
             }
         });
 
     }
     public void openHome(){
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame,new HomeFragment(),"HomeFragment");
+        getSupportFragmentManager().beginTransaction().add(R.id.frame,HomeFragment.class,null);
         getSupportFragmentManager().beginTransaction().commit();
         if(getSupportActionBar()!=null){
             getSupportActionBar().setTitle("Home");
