@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                     drawerLayout.closeDrawers();
                 }else if(item.getItemId()==R.id.nav_yoga){
                     getSupportFragmentManager().beginTransaction()
-                            .add(R.id.frame,new YogaFragment())
+                            .replace(R.id.frame,new YogaFragment())
                             .commit();
                     if(getSupportActionBar()!=null){
                         getSupportActionBar().setTitle("Yoga Information");
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                     drawerLayout.closeDrawers();
                 }else if(item.getItemId()==R.id.nav_music){
                     getSupportFragmentManager().beginTransaction()
-                            .add(R.id.frame,new HealingMusicFragment())
+                            .replace(R.id.frame,new HealingMusicFragment())
                             .commit();
                     if(getSupportActionBar()!=null){
                         getSupportActionBar().setTitle("Healing Music");
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                     drawerLayout.closeDrawers();
                 }else if(item.getItemId()==R.id.nav_about_us){
                     getSupportFragmentManager().beginTransaction()
-                            .add(R.id.frame,new AboutUsFragment())
+                            .replace(R.id.frame,new AboutUsFragment())
                             .commit();
                     if(getSupportActionBar()!=null){
                         getSupportActionBar().setTitle("About Us");
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void openHome(){
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.frame,new HomeFragment())
+                .replace(R.id.frame,new HomeFragment())
                 .commit();
         if(getSupportActionBar()!=null){
             getSupportActionBar().setTitle("Home");
