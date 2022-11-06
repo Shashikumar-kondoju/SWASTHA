@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
@@ -62,22 +63,25 @@ public class MainActivity extends AppCompatActivity {
                     openHome();
                     drawerLayout.closeDrawers();
                 }else if(item.getItemId()==R.id.nav_yoga){
-                    getSupportFragmentManager().beginTransaction().add(R.id.frame,YogaFragment.class,null);
-                    getSupportFragmentManager().beginTransaction().commit();
+                    getSupportFragmentManager().beginTransaction()
+                            .add(R.id.frame,new YogaFragment())
+                            .commit();
                     if(getSupportActionBar()!=null){
                         getSupportActionBar().setTitle("Yoga Information");
                     }
                     drawerLayout.closeDrawers();
                 }else if(item.getItemId()==R.id.nav_music){
-                    getSupportFragmentManager().beginTransaction().add(R.id.frame,HealingMusicFragment.class,null);
-                    getSupportFragmentManager().beginTransaction().commit();
+                    getSupportFragmentManager().beginTransaction()
+                            .add(R.id.frame,new HealingMusicFragment())
+                            .commit();
                     if(getSupportActionBar()!=null){
                         getSupportActionBar().setTitle("Healing Music");
                     }
                     drawerLayout.closeDrawers();
                 }else if(item.getItemId()==R.id.nav_about_us){
-                    getSupportFragmentManager().beginTransaction().add(R.id.frame,AboutUsFragment.class,null);
-                    getSupportFragmentManager().beginTransaction().commit();
+                    getSupportFragmentManager().beginTransaction()
+                            .add(R.id.frame,new AboutUsFragment())
+                            .commit();
                     if(getSupportActionBar()!=null){
                         getSupportActionBar().setTitle("About Us");
                     }
@@ -89,8 +93,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void openHome(){
-        getSupportFragmentManager().beginTransaction().add(R.id.frame,HomeFragment.class,null);
-        getSupportFragmentManager().beginTransaction().commit();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.frame,new HomeFragment())
+                .commit();
         if(getSupportActionBar()!=null){
             getSupportActionBar().setTitle("Home");
         }
@@ -112,6 +117,17 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("Title");
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+
+    @Override
+    public void onBackPressed(){
+        Fragment frag = getSupportFragmentManager().findFragmentById(R.id.frame);
+        if(frag.equals(HomeFragment.class)) {
+            super.onBackPressed();
+        }else{
+            openHome();
         }
     }
 }

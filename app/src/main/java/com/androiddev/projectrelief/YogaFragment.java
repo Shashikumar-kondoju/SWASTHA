@@ -3,40 +3,33 @@ package com.androiddev.projectrelief;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link YogaFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class YogaFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    RecyclerView rec_view;
+    YogaAdapter adapter;
 
-    // TODO: Rename and change types of parameters
+
     private String mParam1;
     private String mParam2;
 
     public YogaFragment() {
-        // Required empty public constructor
+
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment YogaFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static YogaFragment newInstance(String param1, String param2) {
         YogaFragment fragment = new YogaFragment();
         Bundle args = new Bundle();
@@ -58,7 +51,28 @@ public class YogaFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_yoga, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_yoga, container, false);
+        rec_view = (RecyclerView)view.findViewById(R.id.rec_view);
+        rec_view.setLayoutManager(new LinearLayoutManager(getContext()));
+        FirebaseRecyclerOptions<model> options =
+                new FirebaseRecyclerOptions.Builder<model>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("yogaasanas"), model.class)
+                        .build();
+        adapter = new YogaAdapter(options);
+        rec_view.setAdapter(adapter);
+        return view;
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 }
