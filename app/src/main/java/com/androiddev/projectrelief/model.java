@@ -1,14 +1,15 @@
 package com.androiddev.projectrelief;
 
 class model {
-    String name,yurl;
+    String name;
+    int img;
     model(){
 
     }
 
-    public model(String name, String yurl) {
+    public model(String name, int img) {
         this.name = name;
-        this.yurl = yurl;
+        this.img = img;
     }
 
     public String getName() {
@@ -19,11 +20,11 @@ class model {
         this.name = name;
     }
 
-    public String getYurl() {
-        return yurl;
+    public int getImg() {
+        return img;
     }
 
-    public void setYurl(String yurl) {
-        this.yurl = yurl;
+    public void setImg(int img) {
+        this.img = img;
     }
 }

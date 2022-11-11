@@ -9,29 +9,35 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class YogaFragment extends Fragment {
+import java.util.ArrayList;
+import java.util.List;
+
+public class YogaCategoriesFragment extends Fragment {
 
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     RecyclerView rec_view;
-    YogaAdapter adapter;
+    YogaCategoriesAdapter adapter;
+    List<model> categories;
+    LinearLayoutManager layoutManager;
 
 
     private String mParam1;
     private String mParam2;
 
-    public YogaFragment() {
+    public YogaCategoriesFragment() {
 
     }
 
 
-    public static YogaFragment newInstance(String param1, String param2) {
-        YogaFragment fragment = new YogaFragment();
+    public static YogaCategoriesFragment newInstance(String param1, String param2) {
+        YogaCategoriesFragment fragment = new YogaCategoriesFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -53,26 +59,20 @@ public class YogaFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_yoga, container, false);
-        rec_view = (RecyclerView)view.findViewById(R.id.rec_view);
-        rec_view.setLayoutManager(new LinearLayoutManager(getContext()));
-        FirebaseRecyclerOptions<model> options =
-                new FirebaseRecyclerOptions.Builder<model>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("yogaasanas"), model.class)
-                        .build();
-        adapter = new YogaAdapter(options);
+
+        categories = new ArrayList<>();
+        categories.add(new model("Basic Asanas",R.drawable.basic));
+        categories.add(new model("Health Related",R.drawable.health));
+        categories.add(new model("Stress and Anxiety",R.drawable.stress));
+
+        rec_view = view.findViewById(R.id.rec_view);
+        layoutManager= new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(RecyclerView.VERTICAL);
+        rec_view.setLayoutManager(layoutManager);
+        adapter = new YogaCategoriesAdapter(categories);
         rec_view.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
         return view;
     }
-    @Override
-    public void onStart() {
-        super.onStart();
-        adapter.startListening();
-    }
 
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        adapter.stopListening();
-    }
 }
