@@ -1,15 +1,22 @@
 package com.androiddev.projectrelief;
 
+
+
+import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 
+import androidx.appcompat.view.menu.ListMenuItemView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
@@ -17,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class YogaCategoriesFragment extends Fragment {
+public class YogaCategoriesFragment extends Fragment implements YogaCategoriesAdapter.onNoteListener{
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -61,7 +68,7 @@ public class YogaCategoriesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_yoga, container, false);
 
         categories = new ArrayList<>();
-        categories.add(new model("Basic Asanas",R.drawable.basic));
+        categories.add(new model("Basic Exercises",R.drawable.basic));
         categories.add(new model("Health Related",R.drawable.health));
         categories.add(new model("Stress and Anxiety",R.drawable.stress));
 
@@ -69,10 +76,16 @@ public class YogaCategoriesFragment extends Fragment {
         layoutManager= new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         rec_view.setLayoutManager(layoutManager);
-        adapter = new YogaCategoriesAdapter(categories);
+        adapter = new YogaCategoriesAdapter(categories,this);
         rec_view.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         return view;
     }
 
+    @Override
+    public void onNoteClick(int position) {
+        Toast.makeText(getContext(),
+                "Clicked",
+                Toast.LENGTH_SHORT).show();
+    }
 }
