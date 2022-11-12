@@ -8,7 +8,6 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                     drawerLayout.closeDrawers();
                 }else if(item.getItemId()==R.id.nav_yoga){
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.frame,new YogaFragment())
+                            .replace(R.id.frame,new YogaCategoriesFragment())
                             .commit();
                     if(getSupportActionBar()!=null){
                         getSupportActionBar().setTitle("Yoga Information");
