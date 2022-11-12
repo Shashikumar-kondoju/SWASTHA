@@ -8,6 +8,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.view.menu.ListMenuItemView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -70,7 +72,7 @@ public class YogaCategoriesFragment extends Fragment implements YogaCategoriesAd
         categories = new ArrayList<>();
         categories.add(new model("Basic Exercises",R.drawable.basic));
         categories.add(new model("Health Related",R.drawable.health));
-        categories.add(new model("Stress and Anxiety",R.drawable.stress));
+        categories.add(new model("stressandanxiety",R.drawable.stress));
 
         rec_view = view.findViewById(R.id.rec_view);
         layoutManager= new LinearLayoutManager(getActivity());
@@ -84,8 +86,11 @@ public class YogaCategoriesFragment extends Fragment implements YogaCategoriesAd
 
     @Override
     public void onNoteClick(int position) {
-        Toast.makeText(getContext(),
-                "Clicked",
-                Toast.LENGTH_SHORT).show();
+        Fragment fragment = new NestedRVFragment();
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame,fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }
