@@ -14,4 +14,6 @@
     <string name="yoga_fragment">Yoga Fragment</string>
     <string name="yoga_name">YOGA NAME</string>
     <string name="new_fragment">New fragment</string>
+    <string name="username">Username</string>
+    <string name="sub_title_of_asana">sub title of asana</string>
 </resources>

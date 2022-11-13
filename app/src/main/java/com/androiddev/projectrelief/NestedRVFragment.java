@@ -3,11 +3,16 @@ package com.androiddev.projectrelief;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +29,9 @@ public class NestedRVFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    RecyclerView recview;
+    NestedRVAdapter nestedRVAdapter;
+    LinearLayoutManager nestedLayoutManager;
 
     public NestedRVFragment() {
         // Required empty public constructor
@@ -62,16 +70,31 @@ public class NestedRVFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_nested_r_v, container, false);
         String str;
-        if(savedInstanceState==null){
-            Bundle extras = this.getActivity().getIntent().getExtras();
-            if(extras==null){
-                str = null;
-            }else{
-                str = extras.getString("required");
-            }
-        }else{
-            str = (String)savedInstanceState.getSerializable("required");
-        }
+        Bundle bundle = this.getArguments();
+        str = (String)bundle.getString("key");
+        recview = (RecyclerView)view.findViewById(R.id.nested_rec_view);
+        nestedLayoutManager = new LinearLayoutManager(getActivity());
+        nestedLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        recview.setLayoutManager(nestedLayoutManager);
+        FirebaseRecyclerOptions<NestedModel> options =
+                new FirebaseRecyclerOptions.Builder<NestedModel>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child(str), NestedModel.class)
+                        .build();
+        nestedRVAdapter = new NestedRVAdapter(options);
+        recview.setAdapter(nestedRVAdapter);
+        nestedRVAdapter.notifyDataSetChanged();
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        nestedRVAdapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        nestedRVAdapter.stopListening();
     }
 }

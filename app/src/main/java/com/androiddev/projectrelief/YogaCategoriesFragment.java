@@ -86,11 +86,13 @@ public class YogaCategoriesFragment extends Fragment implements YogaCategoriesAd
 
     @Override
     public void onNoteClick(int position) {
+        Bundle bundle = new Bundle();
+        bundle.putString("key",categories.get(position).getName());
         Fragment fragment = new NestedRVFragment();
+        fragment.setArguments(bundle);
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame,fragment);
-        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 }
