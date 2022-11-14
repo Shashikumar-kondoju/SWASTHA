@@ -1,4 +1,4 @@
-package com.androiddev.projectrelief;
+package com.androiddev.projectrelief.Fragments;
 
 import android.os.Bundle;
 
@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
+import com.androiddev.projectrelief.Models.NestedModel;
+import com.androiddev.projectrelief.Adapters.NestedRVAdapter;
+import com.androiddev.projectrelief.R;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -32,6 +34,7 @@ public class NestedRVFragment extends Fragment {
     RecyclerView recview;
     NestedRVAdapter nestedRVAdapter;
     LinearLayoutManager nestedLayoutManager;
+    FirebaseRecyclerOptions<NestedModel> options;
 
     public NestedRVFragment() {
         // Required empty public constructor
@@ -76,10 +79,22 @@ public class NestedRVFragment extends Fragment {
         nestedLayoutManager = new LinearLayoutManager(getActivity());
         nestedLayoutManager.setOrientation(RecyclerView.VERTICAL);
         recview.setLayoutManager(nestedLayoutManager);
-        FirebaseRecyclerOptions<NestedModel> options =
-                new FirebaseRecyclerOptions.Builder<NestedModel>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child(str), NestedModel.class)
-                        .build();
+        if(str.equals("Stress and Anxiety")){
+            options =
+                    new FirebaseRecyclerOptions.Builder<NestedModel>()
+                            .setQuery(FirebaseDatabase.getInstance().getReference().child("stressandanxiety"), NestedModel.class)
+                            .build();
+        }else if(str.equals("Health Related")){
+            options =
+                    new FirebaseRecyclerOptions.Builder<NestedModel>()
+                            .setQuery(FirebaseDatabase.getInstance().getReference().child("healthrelated"), NestedModel.class)
+                            .build();
+        }else if(str.equals("Basic Exercies")){
+            options =
+                    new FirebaseRecyclerOptions.Builder<NestedModel>()
+                            .setQuery(FirebaseDatabase.getInstance().getReference().child("basicexercises"), NestedModel.class)
+                            .build();
+        }
         nestedRVAdapter = new NestedRVAdapter(options);
         recview.setAdapter(nestedRVAdapter);
         nestedRVAdapter.notifyDataSetChanged();

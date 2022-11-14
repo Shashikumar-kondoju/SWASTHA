@@ -1,32 +1,27 @@
-package com.androiddev.projectrelief;
+package com.androiddev.projectrelief.Fragments;
 
 
 
-import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 
-import androidx.appcompat.view.menu.ListMenuItemView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.FirebaseDatabase;
+import com.androiddev.projectrelief.Models.model;
+import com.androiddev.projectrelief.R;
+import com.androiddev.projectrelief.Adapters.YogaCategoriesAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class YogaCategoriesFragment extends Fragment implements YogaCategoriesAdapter.onNoteListener{
+public class YogaCategoriesFragment extends Fragment implements YogaCategoriesAdapter.onNoteListener {
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -72,7 +67,7 @@ public class YogaCategoriesFragment extends Fragment implements YogaCategoriesAd
         categories = new ArrayList<>();
         categories.add(new model("Basic Exercises",R.drawable.basic));
         categories.add(new model("Health Related",R.drawable.health));
-        categories.add(new model("stressandanxiety",R.drawable.stress));
+        categories.add(new model("Stress and Anxiety",R.drawable.stress));
 
         rec_view = view.findViewById(R.id.rec_view);
         layoutManager= new LinearLayoutManager(getActivity());

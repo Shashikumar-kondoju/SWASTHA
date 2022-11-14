@@ -29,6 +29,7 @@ android {
     }
     compileSdkVersion 32
     buildToolsVersion '32.0.0'
+    namespace 'com.androiddev.projectrelief'
 }
 
 dependencies {

@@ -1,6 +1,6 @@
-package com.androiddev.projectrelief;
+package com.androiddev.projectrelief.Models;
 
-class model {
+public class model {
     String name;
     int img;
     model(){

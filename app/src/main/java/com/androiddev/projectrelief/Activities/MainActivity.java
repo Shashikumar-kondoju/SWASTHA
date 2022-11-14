@@ -1,4 +1,4 @@
-package com.androiddev.projectrelief;
+package com.androiddev.projectrelief.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -13,6 +13,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import com.androiddev.projectrelief.Fragments.AboutUsFragment;
+import com.androiddev.projectrelief.Fragments.HealingMusicFragment;
+import com.androiddev.projectrelief.Fragments.HomeFragment;
+import com.androiddev.projectrelief.Fragments.YogaCategoriesFragment;
+import com.androiddev.projectrelief.R;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {

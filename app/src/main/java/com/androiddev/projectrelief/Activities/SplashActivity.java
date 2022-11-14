@@ -1,10 +1,12 @@
-package com.androiddev.projectrelief;
+package com.androiddev.projectrelief.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.androiddev.projectrelief.R;
 
 public class SplashActivity extends AppCompatActivity {
 

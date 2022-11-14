@@ -1,6 +1,5 @@
-package com.androiddev.projectrelief;
+package com.androiddev.projectrelief.Adapters;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.androiddev.projectrelief.Models.model;
+import com.androiddev.projectrelief.R;
 
 import java.util.List;
 

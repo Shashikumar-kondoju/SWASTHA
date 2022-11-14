@@ -1,4 +1,4 @@
-package com.androiddev.projectrelief;
+package com.androiddev.projectrelief.Adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,11 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.androiddev.projectrelief.Models.NestedModel;
+import com.androiddev.projectrelief.R;
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-
-import java.util.List;
 
 public class NestedRVAdapter extends FirebaseRecyclerAdapter<NestedModel, NestedRVAdapter.myviewholder> {
 
