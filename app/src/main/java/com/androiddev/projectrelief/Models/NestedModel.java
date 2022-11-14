@@ -1,4 +1,4 @@
-package com.androiddev.projectrelief;
+package com.androiddev.projectrelief.Models;
 
 public class NestedModel {
     private String img,name,tag;

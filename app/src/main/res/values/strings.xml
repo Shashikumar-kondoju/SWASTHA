@@ -16,4 +16,5 @@
     <string name="new_fragment">New fragment</string>
     <string name="username">Username</string>
     <string name="sub_title_of_asana">sub title of asana</string>
+    <string name="categories">CATEGORIES</string>
 </resources>
