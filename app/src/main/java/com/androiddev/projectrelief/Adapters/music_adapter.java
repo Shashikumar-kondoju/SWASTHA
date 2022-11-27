@@ -12,63 +12,45 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.androiddev.projectrelief.Fragments.HealingMusicFragment;
+import com.androiddev.projectrelief.Models.NestedModel;
 import com.androiddev.projectrelief.Models.songs;
 import com.androiddev.projectrelief.R;
+import com.bumptech.glide.Glide;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 
+import java.text.BreakIterator;
 import java.util.ArrayList;
 
-public class music_adapter extends RecyclerView.Adapter<music_adapter.MyViewHolder> {
+public class music_adapter extends FirebaseRecyclerAdapter<songs, music_adapter.myviewholder> {
 
-
-    Context context;
-
-
-    ArrayList<songs> list;
-
-    public music_adapter(HealingMusicFragment context, ArrayList<songs> list) {
-
-        this.list = list;
+    public music_adapter(@NonNull FirebaseRecyclerOptions<songs> options) {
+        super(options);
     }
 
+    @Override
+    protected void onBindViewHolder(@NonNull myviewholder holder, int position, @NonNull songs model) {
+        Glide.with(holder.imag.getContext()).load(model.getImg()).into(holder.imag);
+        holder.song.setText(model.getSong());
+        holder.description.setText(model.getDescription());
+    }
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.fragment_healing_music,parent,false);
-        return new MyViewHolder(v);
+    public myviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_healing_music,parent,false);
+        return new myviewholder(view);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    class myviewholder extends RecyclerView.ViewHolder{
 
-
-        songs songs = list.get(position);
-        holder.song.setText(songs.getSong());
-        holder.description.setText(songs.getDescription());
-        holder.imag.setImageURI(Uri.parse(songs.getImg()));
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return list.size();
-    }
-
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
-
-            ImageView imag;
-            TextView description, song;
-
-
-        public MyViewHolder(@NonNull View itemView) {
+        ImageView imag;
+        TextView song,description;
+        public myviewholder(@NonNull View itemView) {
             super(itemView);
-
-           imag = itemView.findViewById(R.id.imag);
-           description = itemView.findViewById(R.id.description);
-           song = itemView.findViewById(R.id.song);
-
+            imag = (ImageView)itemView.findViewById(R.id.imag);
+            song = (TextView)itemView.findViewById(R.id.song);
+            description = (TextView)itemView.findViewById(R.id.description);
         }
     }
-
-
 }

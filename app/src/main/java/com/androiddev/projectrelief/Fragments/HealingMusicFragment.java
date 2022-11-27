@@ -1,14 +1,20 @@
 package com.androiddev.projectrelief.Fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.androiddev.projectrelief.Adapters.NestedRVAdapter;
+import com.androiddev.projectrelief.Adapters.music_adapter;
+import com.androiddev.projectrelief.Models.songs;
 import com.androiddev.projectrelief.R;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +22,7 @@ import com.androiddev.projectrelief.R;
  * create an instance of this fragment.
  */
 public class HealingMusicFragment extends Fragment {
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,6 +32,11 @@ public class HealingMusicFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    RecyclerView recyclerView;
+    music_adapter music_adapter;
+    LinearLayoutManager musiclayoutmanager;
+    FirebaseRecyclerOptions<songs> options;
 
     public HealingMusicFragment() {
         // Required empty public constructor
@@ -61,6 +73,40 @@ public class HealingMusicFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_healing_music, container, false);
+        View view = inflater.inflate(R.layout.fragment_healing_music, container, false);
+
+        String str;
+        Bundle bundle = this.getArguments();
+        str = (String) bundle.getString("key");
+
+        recyclerView = (RecyclerView) view.findViewById(R.id.songview);
+        musiclayoutmanager = new LinearLayoutManager(getActivity());
+        musiclayoutmanager.setOrientation(RecyclerView.VERTICAL);
+        recyclerView.setLayoutManager(musiclayoutmanager);
+
+        if (str.equals("songs")) {
+            options =
+                    new FirebaseRecyclerOptions.Builder<songs>()
+                            .setQuery(FirebaseDatabase.getInstance().getReference().child("songs"), songs.class)
+                            .build();
+
+        }
+        music_adapter = new music_adapter(options);
+        recyclerView.setAdapter(music_adapter);
+        music_adapter.notifyDataSetChanged();
+        return view;
+
     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        music_adapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        music_adapter.stopListening();
+    }
+
 }
