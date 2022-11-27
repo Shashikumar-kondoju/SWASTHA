@@ -17,4 +17,6 @@
     <string name="username">Username</string>
     <string name="sub_title_of_asana">sub title of asana</string>
     <string name="categories">CATEGORIES</string>
+    <string name="music">#MUSIC</string>
+    <string name="relax_says">Relax, says</string>
 </resources>

@@ -1,51 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.MainActivity">
-
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/editedversion"
-        android:contentDescription="TODO"
-        tools:ignore="ContentDescription" />
+    android:background="@color/black"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="12dp"
         android:fontFamily="@font/anton"
         android:includeFontPadding="false"
-        android:text="MUSIC"
-        android:textColor="#FDFCFD"
-        android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintEnd_toStartOf="@+id/imageView4"
-        app:layout_constraintHorizontal_bias="0.166"
+        android:text="#MUSIC"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/heading3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.194" />
+        app:layout_constraintVertical_bias="0.023" />
 
     <TextView
         android:id="@+id/heading3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="16dp"
         android:text="Relax, says"
         android:textColor="@color/white"
-        android:textSize="28sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@+id/heading"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/heading"
@@ -53,13 +38,25 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="94dp"
-        android:layout_height="120dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintHorizontal_bias="0.921"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.304"
+        app:layout_constraintStart_toEndOf="@+id/heading"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023"
+        app:srcCompat="@drawable/musicbg" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/songview"
+        android:layout_width="409dp"
+        android:layout_height="665dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/music" />
+        app:layout_constraintVertical_bias="1.0" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
