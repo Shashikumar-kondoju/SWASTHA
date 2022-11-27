@@ -38,7 +38,7 @@ public class music_adapter extends FirebaseRecyclerAdapter<songs, music_adapter.
     @NonNull
     @Override
     public myviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_healing_music,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview,parent,false);
         return new myviewholder(view);
     }
 

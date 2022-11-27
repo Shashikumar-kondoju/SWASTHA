@@ -28,14 +28,14 @@
                 android:id="@+id/imag"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                android:contentDescription="TODO"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.003"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/mercysong"
-                android:contentDescription="TODO" />
+                app:srcCompat="@drawable/mercysong" />
 
             <TextView
                 android:id="@+id/song"
