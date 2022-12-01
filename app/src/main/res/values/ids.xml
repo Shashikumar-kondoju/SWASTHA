@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="songlist0" type="id" />
+    <item name="activity_songlist" type="id" />
+    <item name="description" type="id" />
+    <item name="song" type="id" />
+</resources>
