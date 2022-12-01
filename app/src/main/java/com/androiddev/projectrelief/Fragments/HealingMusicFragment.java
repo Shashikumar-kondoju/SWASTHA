@@ -77,7 +77,7 @@ public class HealingMusicFragment extends Fragment {
 
         String str;
         Bundle bundle = this.getArguments();
-        str = (String) bundle.getString("key");
+        str = (String) bundle.getString("song");
 
         recyclerView = (RecyclerView) view.findViewById(R.id.songview);
         musiclayoutmanager = new LinearLayoutManager(getActivity());
@@ -89,6 +89,7 @@ public class HealingMusicFragment extends Fragment {
                     new FirebaseRecyclerOptions.Builder<songs>()
                             .setQuery(FirebaseDatabase.getInstance().getReference().child("songs"), songs.class)
                             .build();
+
 
         }
         music_adapter = new music_adapter(options);
