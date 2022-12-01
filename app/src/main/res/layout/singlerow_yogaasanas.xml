@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<androidx.cardview.widget.CardView
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="10dp"
-    android:elevation="8dp"
-    app:cardUseCompatPadding="true">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    app:cardCornerRadius="15dp"
+    android:layout_margin="10dp">
+            
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/black">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:src="@mipmap/ic_launcher"
-            android:alpha="0.6"
+            android:alpha="0.7"
             android:scaleType="fitXY"
             android:id="@+id/img"/>
 
@@ -24,10 +27,9 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/img"
             android:layout_centerInParent="true"
-            android:layout_marginTop="46dp"
-            android:layout_marginBottom="46dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
             android:elevation="11dp"
-            android:fontFamily="serif-monospace"
             android:text="@string/yoga_name"
             android:textColor="@color/white"
             android:textSize="30sp"

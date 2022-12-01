@@ -89,7 +89,7 @@ public class NestedRVFragment extends Fragment {
                     new FirebaseRecyclerOptions.Builder<NestedModel>()
                             .setQuery(FirebaseDatabase.getInstance().getReference().child("healthrelated"), NestedModel.class)
                             .build();
-        }else if(str.equals("Basic Exercies")){
+        }else if(str.equals("Basic Exercises")){
             options =
                     new FirebaseRecyclerOptions.Builder<NestedModel>()
                             .setQuery(FirebaseDatabase.getInstance().getReference().child("basicexercises"), NestedModel.class)
