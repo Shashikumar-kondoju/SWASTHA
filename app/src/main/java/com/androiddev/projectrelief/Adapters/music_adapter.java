@@ -1,7 +1,5 @@
 package com.androiddev.projectrelief.Adapters;
 
-import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,16 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.androiddev.projectrelief.Fragments.HealingMusicFragment;
-import com.androiddev.projectrelief.Models.NestedModel;
 import com.androiddev.projectrelief.Models.songs;
 import com.androiddev.projectrelief.R;
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-
-import java.text.BreakIterator;
-import java.util.ArrayList;
 
 public class music_adapter extends FirebaseRecyclerAdapter<songs, music_adapter.myviewholder> {
 

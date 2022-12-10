@@ -1,7 +1,5 @@
 package com.androiddev.projectrelief.Models;
 
-import androidx.fragment.app.Fragment;
-
 public class songs {
     private String description, imag, song;
 
