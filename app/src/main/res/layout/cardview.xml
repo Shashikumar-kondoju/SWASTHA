@@ -10,7 +10,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/card"
         android:layout_width="390dp"
-        android:layout_height="150dp"
+        android:layout_height="140dp"
         app:cardBackgroundColor="#1B1B1B"
         app:cardCornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,8 +26,8 @@
 
             <ImageView
                 android:id="@+id/imag"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
                 android:contentDescription="TODO"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -59,6 +59,7 @@
                 android:fontFamily="sans-serif-condensed-medium"
                 android:text="Mercy featuring Shawn Mendes  "
                 android:textColor="@color/white"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"

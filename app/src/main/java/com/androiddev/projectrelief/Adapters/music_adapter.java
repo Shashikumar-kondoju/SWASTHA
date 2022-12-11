@@ -41,7 +41,7 @@ public class music_adapter extends FirebaseRecyclerAdapter<songs, music_adapter.
         TextView song,description;
         public myviewholder(@NonNull View itemView) {
             super(itemView);
-            imag = (ImageView)itemView.findViewById(R.id.imag);
+            imag = (ImageView) itemView.findViewById(R.id.imag);
             song = (TextView)itemView.findViewById(R.id.song);
             description = (TextView)itemView.findViewById(R.id.description);
         }
