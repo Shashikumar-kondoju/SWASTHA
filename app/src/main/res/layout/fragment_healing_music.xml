@@ -9,12 +9,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/songview"
         android:layout_width="match_parent"
-        android:layout_height="720dp"
+        android:layout_height="680dp"
+        android:clipToPadding="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.529" />
 
     <TextView
         android:id="@+id/heading"
@@ -24,20 +26,20 @@
         android:fontFamily="@font/anton"
         android:includeFontPadding="false"
         android:text="#MUSIC"
-        android:textColor="@color/white"
+        android:textColor="#E7E7E7"
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/heading3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.043" />
+        app:layout_constraintVertical_bias="0.039" />
 
     <TextView
         android:id="@+id/heading3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="16dp"
         android:text="Relax, says"
         android:textColor="@color/white"
         android:textSize="28sp"
@@ -48,14 +50,14 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="122dp"
-        android:layout_height="52dp"
+        android:layout_width="150dp"
+        android:layout_height="62dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/heading"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.044"
+        app:layout_constraintVertical_bias="0.023"
         app:srcCompat="@drawable/musicbg" />
 
 
