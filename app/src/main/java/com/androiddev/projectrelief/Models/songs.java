@@ -1,15 +1,15 @@
 package com.androiddev.projectrelief.Models;
 
 public class songs {
-    private String description, imag, song;
+    private String description, imagem, song;
 
     public songs(){
 
     }
 
-    public songs(String imag, String song, String description) {
+    public songs(String imagem, String song, String description) {
 
-        this.imag = imag;
+        this.imagem = imagem;
         this.description = description;
         this.song = song;
     }
@@ -21,9 +21,9 @@ public class songs {
     public void setDescription(String description) {this.description = description;}
 
     public String getImg() {
-        return imag;
+        return imagem;
     }
-    public void setImag(String imag) {this.imag = imag;}
+    public void setImg(String imagem) {this.imagem = imagem;}
 
     public String getSong() {
         return song;

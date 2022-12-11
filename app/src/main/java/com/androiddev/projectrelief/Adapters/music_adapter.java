@@ -23,7 +23,7 @@ public class music_adapter extends FirebaseRecyclerAdapter<songs, music_adapter.
 
     @Override
     protected void onBindViewHolder(@NonNull myviewholder holder, int position, @NonNull songs model) {
-        Glide.with(holder.imag.getContext()).load(model.getImg()).into(holder.imag);
+        Glide.with(holder.imagem.getContext()).load(model.getImg()).into(holder.imagem);
         holder.song.setText(model.getSong());
         holder.description.setText(model.getDescription());
     }
@@ -37,11 +37,11 @@ public class music_adapter extends FirebaseRecyclerAdapter<songs, music_adapter.
 
     class myviewholder extends RecyclerView.ViewHolder{
 
-        ImageView imag;
+        ImageView imagem;
         TextView song,description;
         public myviewholder(@NonNull View itemView) {
             super(itemView);
-            imag = (ImageView)itemView.findViewById(R.id.imag);
+            imagem = (ImageView)itemView.findViewById(R.id.imagem);
             song = (TextView)itemView.findViewById(R.id.song);
             description = (TextView)itemView.findViewById(R.id.description);
         }
