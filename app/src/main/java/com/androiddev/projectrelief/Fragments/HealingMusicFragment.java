@@ -75,28 +75,20 @@ public class HealingMusicFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_healing_music, container, false);
 
-        String str;
-        Bundle bundle = this.getArguments();
-        str = (String) bundle.getString("song");
-
         recyclerView = (RecyclerView) view.findViewById(R.id.songview);
         musiclayoutmanager = new LinearLayoutManager(getActivity());
         musiclayoutmanager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(musiclayoutmanager);
 
-        if (str.equals("songs")) {
-            options =
-                    new FirebaseRecyclerOptions.Builder<songs>()
-                            .setQuery(FirebaseDatabase.getInstance().getReference().child("songs"), songs.class)
-                            .build();
 
-
-        }
+        options =
+            new FirebaseRecyclerOptions.Builder<songs>()
+                    .setQuery(FirebaseDatabase.getInstance().getReference().child("songs"), songs.class)
+                    .build();
         music_adapter = new music_adapter(options);
         recyclerView.setAdapter(music_adapter);
         music_adapter.notifyDataSetChanged();
         return view;
-
     }
     @Override
     public void onStart() {
