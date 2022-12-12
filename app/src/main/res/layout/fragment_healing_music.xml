@@ -25,7 +25,7 @@
         android:layout_marginStart="12dp"
         android:fontFamily="@font/anton"
         android:includeFontPadding="false"
-        android:text="#MUSIC"
+        android:text="MUSIC"
         android:textColor="#E7E7E7"
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,6 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:fontFamily="sans-serif"
         android:text="Relax, says"
         android:textColor="@color/white"
         android:textSize="28sp"
@@ -50,15 +51,31 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="150dp"
+        android:layout_width="160dp"
         android:layout_height="62dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.407"
         app:layout_constraintStart_toEndOf="@+id/heading"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023"
         app:srcCompat="@drawable/musicbg" />
+
+    <TextView
+        android:id="@+id/quote"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:fontFamily="@font/arvo"
+        android:text="-relaxation in process-"
+        android:textAlignment="center"
+        android:textColor="@color/colorIcons"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
