@@ -77,7 +77,6 @@ public class HealingMusicFragment extends Fragment {
 
         recyclerView = (RecyclerView) view.findViewById(R.id.songview);
         musiclayoutmanager = new LinearLayoutManager(getActivity());
-        musiclayoutmanager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(musiclayoutmanager);
 
 

@@ -11,12 +11,14 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.animation.BounceInterpolator;
 import android.widget.FrameLayout;
 
 import com.androiddev.projectrelief.Fragments.AboutUsFragment;
 import com.androiddev.projectrelief.Fragments.HealingMusicFragment;
 import com.androiddev.projectrelief.Fragments.HomeFragment;
 import com.androiddev.projectrelief.Fragments.YogaCategoriesFragment;
+import com.androiddev.projectrelief.Fragments.YogaInfoFragment;
 import com.androiddev.projectrelief.R;
 import com.google.android.material.navigation.NavigationView;
 

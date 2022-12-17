@@ -7,9 +7,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.androiddev.projectrelief.Fragments.NestedRVFragment;
+import com.androiddev.projectrelief.Fragments.YogaInfoFragment;
 import com.androiddev.projectrelief.Models.NestedModel;
 import com.androiddev.projectrelief.R;
 import com.bumptech.glide.Glide;
@@ -27,6 +29,16 @@ public class NestedRVAdapter extends FirebaseRecyclerAdapter<NestedModel, Nested
         Glide.with(holder.img.getContext()).load(model.getImg()).into(holder.img);
         holder.name.setText(model.getName());
         holder.tag.setText(model.getTag());
+        holder.img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity activity = (AppCompatActivity)view.getContext();
+                activity.getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frame, new YogaInfoFragment(model.getGif(),model.getImg(),model.getInfo(),model.getName(),model.getTag()))
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
     }
 
     @NonNull
