@@ -1,18 +1,19 @@
 package com.androiddev.projectrelief.Models;
 
 public class NestedModel {
-    private String img,name,tag,gif,info;
+    private String img,name,tag,gif,info,yt;
 
     public NestedModel(){
 
     }
 
-    public NestedModel(String gif, String img, String info,String name,String tag) {
+    public NestedModel(String gif, String img, String info,String name,String tag,String yt) {
         this.img = img;
         this.name = name;
         this.tag = tag;
         this.gif = gif;
         this.info = info;
+        this.yt = yt;
     }
 
     public String getImg() {
@@ -21,6 +22,14 @@ public class NestedModel {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public String getYt() {
+        return yt;
+    }
+
+    public void setYt(String yt) {
+        this.yt = yt;
     }
 
     public String getName() {

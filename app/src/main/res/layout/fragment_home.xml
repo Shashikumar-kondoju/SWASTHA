@@ -259,7 +259,7 @@
                     android:background="@drawable/white_background">
 
                     <ImageView
-                        android:id="@+id/imageView5"
+                        android:id="@+id/imageViewExercise"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="14dp"
@@ -301,7 +301,7 @@
                     android:background="@drawable/white_background">
 
                     <ImageView
-                        android:id="@+id/imageView5"
+                        android:id="@+id/imageViewMusic"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -341,7 +341,7 @@
                     android:background="@drawable/white_background">
 
                     <ImageView
-                        android:id="@+id/imageView5"
+                        android:id="@+id/imageViewBreathing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"

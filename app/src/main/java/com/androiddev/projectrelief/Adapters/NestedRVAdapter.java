@@ -1,5 +1,6 @@
 package com.androiddev.projectrelief.Adapters;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.androiddev.projectrelief.Fragments.NestedRVFragment;
@@ -32,11 +36,20 @@ public class NestedRVAdapter extends FirebaseRecyclerAdapter<NestedModel, Nested
         holder.img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("gifKey",model.getGif());
+                bundle.putString("imgKey",model.getImg());
+                bundle.putString("infoKey",model.getInfo());
+                bundle.putString("nameKey",model.getName());
+                bundle.putString("tagKey",model.getTag());
+                bundle.putString("ytKey",model.getYt());
+                Fragment fragment = new YogaInfoFragment();
+                fragment.setArguments(bundle);
                 AppCompatActivity activity = (AppCompatActivity)view.getContext();
-                activity.getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frame, new YogaInfoFragment(model.getGif(),model.getImg(),model.getInfo(),model.getName(),model.getTag()))
-                        .addToBackStack(null)
-                        .commit();
+                FragmentManager fragmentManager = activity.getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frame,fragment);
+                fragmentTransaction.commit();
             }
         });
     }

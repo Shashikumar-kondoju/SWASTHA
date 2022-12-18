@@ -3,10 +3,13 @@ package com.androiddev.projectrelief.Fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.androiddev.projectrelief.R;
 
@@ -16,6 +19,9 @@ import com.androiddev.projectrelief.R;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
+
+    ImageView imageViewExercise;
+    ImageView imageViewMusic;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -63,6 +69,30 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_home,container , false);
+
+        imageViewExercise = (ImageView)view.findViewById(R.id.imageViewExercise);
+        imageViewExercise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new YogaCategoriesFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frame,fragment);
+                fragmentTransaction.commit();
+            }
+        });
+
+        imageViewMusic = (ImageView)view.findViewById(R.id.imageViewMusic);
+        imageViewMusic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new HealingMusicFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frame,fragment);
+                fragmentTransaction.commit();
+            }
+        });
         return view;
     }
 }

@@ -2,6 +2,7 @@ package com.androiddev.projectrelief.Fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -13,6 +14,8 @@ import android.widget.TextView;
 import com.androiddev.projectrelief.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import pl.droidsonroids.gif.GifImageView;
@@ -29,7 +32,7 @@ public class YogaInfoFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
-    String img,name,tag,gif,info;
+    String img,name,tag,gif,info,yt;
 //    TextView asanaHeading;
 //    GifImageView asanaGif;
 //    TextView asanaInfo;
@@ -39,13 +42,6 @@ public class YogaInfoFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public YogaInfoFragment(String gif,String img,String info,String name,String tag) {
-        this.img = img;
-        this.name = name;
-        this.gif = gif;
-        this.tag = tag;
-        this.info = info;
-    }
 
     public static YogaInfoFragment newInstance(String param1, String param2) {
         YogaInfoFragment fragment = new YogaInfoFragment();
@@ -71,6 +67,14 @@ public class YogaInfoFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_yoga_info, container, false);
 
+        Bundle bundle = this.getArguments();
+        gif = (String)bundle.getString("gifKey");
+        img = (String)bundle.getString("imgKey");
+        info = (String)bundle.getString("infoKey");
+        name = (String)bundle.getString("nameKey");
+        tag = (String)bundle.getString("tagKey");
+        yt = (String)bundle.getString("ytKey");
+
         TextView headingHolder = view.findViewById(R.id.asana_heading);
         GifImageView asanaGif = view.findViewById(R.id.asana_gif);
         TextView asanaInfo = view.findViewById(R.id.asanas_info);
@@ -79,6 +83,13 @@ public class YogaInfoFragment extends Fragment {
         headingHolder.setText(name);
         Glide.with(this).load(gif).into(asanaGif);
         asanaInfo.setText(info);
+        asanaYt.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+                String videoId = yt;
+                youTubePlayer.loadVideo(videoId,0);
+            }
+        });
         return view;
     }
     public void onBackPressed(){
@@ -86,7 +97,6 @@ public class YogaInfoFragment extends Fragment {
         assert activity != null;
         activity.getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frame, new YogaCategoriesFragment())
-                .addToBackStack(null)
                 .commit();
     }
 }
