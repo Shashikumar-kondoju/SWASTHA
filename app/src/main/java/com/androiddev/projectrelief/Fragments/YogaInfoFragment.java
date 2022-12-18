@@ -68,12 +68,12 @@ public class YogaInfoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_yoga_info, container, false);
 
         Bundle bundle = this.getArguments();
-        gif = (String)bundle.getString("gifKey");
-        img = (String)bundle.getString("imgKey");
-        info = (String)bundle.getString("infoKey");
-        name = (String)bundle.getString("nameKey");
-        tag = (String)bundle.getString("tagKey");
-        yt = (String)bundle.getString("ytKey");
+        if(bundle!=null){
+            gif = (String)bundle.getString("gifKey");
+            info = (String)bundle.getString("infoKey");
+            name = (String)bundle.getString("nameKey");
+            yt = (String)bundle.getString("ytKey");
+        }
 
         TextView headingHolder = view.findViewById(R.id.asana_heading);
         GifImageView asanaGif = view.findViewById(R.id.asana_gif);

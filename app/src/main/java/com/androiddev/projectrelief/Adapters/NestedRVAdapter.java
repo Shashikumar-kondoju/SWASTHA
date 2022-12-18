@@ -9,12 +9,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.androiddev.projectrelief.Fragments.NestedRVFragment;
 import com.androiddev.projectrelief.Fragments.YogaInfoFragment;
 import com.androiddev.projectrelief.Models.NestedModel;
 import com.androiddev.projectrelief.R;
@@ -38,18 +34,13 @@ public class NestedRVAdapter extends FirebaseRecyclerAdapter<NestedModel, Nested
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putString("gifKey",model.getGif());
-                bundle.putString("imgKey",model.getImg());
                 bundle.putString("infoKey",model.getInfo());
                 bundle.putString("nameKey",model.getName());
-                bundle.putString("tagKey",model.getTag());
                 bundle.putString("ytKey",model.getYt());
-                Fragment fragment = new YogaInfoFragment();
-                fragment.setArguments(bundle);
+                YogaInfoFragment yogaInfoFragment = new YogaInfoFragment();
+                yogaInfoFragment.setArguments(bundle);
                 AppCompatActivity activity = (AppCompatActivity)view.getContext();
-                FragmentManager fragmentManager = activity.getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frame,fragment);
-                fragmentTransaction.commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,yogaInfoFragment).commit();
             }
         });
     }
