@@ -3,6 +3,7 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/arvo</item>
         <item>@font/bangers</item>
+        <item>@font/bebas_neue</item>
         <item>@font/dm_serif_display</item>
     </array>
 </resources>

@@ -21,4 +21,12 @@
     <string name="relax_says">Relax, says</string>
     <string name="para">Yoga-like practices are first mentioned in the Rigveda as a non-Brahminical practice.[9] Yoga is referred to in a number of the Upanishads.[10][11][12] The first known appearance of the word "yoga" with the same meaning as the modern term is in the Katha Upanishad,[13][14] which was probably composed between the fifth and third centuries BCE.[15][16] Yoga continued to develop as a systematic study and practice during the fifth and sixth centuries BCE in ancient India\'s ascetic and Śramaṇa movements.[17] The most comprehensive text on Yoga, the Yoga Sutras of Patanjali, date to the early centuries of the Common Era;[18][19][note 1] Yoga philosophy became known as one of the six orthodox philosophical schools (Darśanas) of Hinduism in the second half of the first millennium CE.[20][web 1] Hatha yoga texts began to emerge between the ninth and 11th centuries, originating in tantra.[21][22]Yoga (/ˈjoʊɡə/ (listen);[1] Sanskrit: योग, lit. \'yoke\' or \'union\' pronounced [joːɡɐ]) is a group of physical, mental, and spiritual practices or disciplines which originated in ancient India and aim to control (yoke) and still the mind, recognizing a detached witness-consciousness untouched by the mind (Chitta) and mundane suffering (Duḥkha). There is a wide variety of schools of yoga, practices, and goals[2] in Hinduism, Buddhism, and Jainism,[3][4][5] and traditional and modern yoga is practiced worldwide.[6] Two general theories exist on the origins of yoga. The linear model holds that yoga originated in the Vedic period, as reflected in the Vedic textual corpus, and influenced Buddhism; according to author Edward Fitzpatrick Crangle, this model is mainly supported by Hindu scholars. According to the synthesis model, yoga is a synthesis of non-Vedic and Vedic elements; this model is favoured in Western scholarship.[7][8]</string>
     <string name="yoga_asana_name">YOGA ASANA NAME</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="email_address">Email Address</string>
+    <string name="name">Name</string>
+    <string name="already_have_account">Already have account?</string>
+    <string name="forgot_password">forgot password?</string>
 </resources>
