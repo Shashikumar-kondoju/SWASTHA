@@ -13,28 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectRelief">
         <activity
-            android:name=".RegistrationActivity"
+            android:name=".Activities.RegistrationActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".LoginActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".YogaInfoActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Fragments.songlist"
+            android:name=".Activities.LoginActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

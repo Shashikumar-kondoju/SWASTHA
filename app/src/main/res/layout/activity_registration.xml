@@ -102,7 +102,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/edtEmailAddress" />
 
             <EditText
-                android:id="@+id/txtConfirmPassword"
+                android:id="@+id/confirmPass"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -126,12 +126,14 @@
                 android:id="@+id/btnRegister"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:backgroundTint="@color/white"
                 android:text="@string/register"
                 android:textColor="@color/black"
-                android:backgroundTint="@color/white"
-                app:layout_constraintEnd_toEndOf="@+id/txtConfirmPassword"
-                app:layout_constraintStart_toStartOf="@+id/txtConfirmPassword"
-                tools:layout_editor_absoluteY="484dp" />
+                app:layout_constraintEnd_toEndOf="@+id/confirmPass"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/confirmPass"
+                app:layout_constraintTop_toBottomOf="@+id/confirmPass" />
 
             <TextView
                 android:id="@+id/txtHaveAcc"
