@@ -1,5 +1,7 @@
 package com.androiddev.projectrelief.Activities;
 
+import static androidx.constraintlayout.widget.StateSet.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,10 +11,15 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.animation.BounceInterpolator;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.androiddev.projectrelief.Fragments.AboutUsFragment;
 import com.androiddev.projectrelief.Fragments.HealingMusicFragment;
@@ -20,7 +27,10 @@ import com.androiddev.projectrelief.Fragments.HomeFragment;
 import com.androiddev.projectrelief.Fragments.YogaCategoriesFragment;
 import com.androiddev.projectrelief.Fragments.YogaInfoFragment;
 import com.androiddev.projectrelief.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     FrameLayout frameLayout;
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
+    FirebaseAuth.AuthStateListener mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +103,17 @@ public class MainActivity extends AppCompatActivity {
                         getSupportActionBar().setTitle("About Us");
                     }
                     drawerLayout.closeDrawers();
+                }else if(item.getItemId()==R.id.log_out){
+                    if (FirebaseAuth.getInstance().getCurrentUser() != null)
+                        FirebaseAuth.getInstance().signOut();
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    SharedPreferences preferences =getSharedPreferences("login", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.clear();
+                    editor.apply();
+                    startActivity(intent);
+                    finishAffinity();
                 }
                 return true;
             }
@@ -125,7 +147,6 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
-
 
     @Override
     public void onBackPressed(){
