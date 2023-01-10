@@ -69,6 +69,8 @@ public class HealingMusicFragment extends Fragment {
         }
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -80,15 +82,17 @@ public class HealingMusicFragment extends Fragment {
         recyclerView.setLayoutManager(musiclayoutmanager);
 
 
+
         options =
-            new FirebaseRecyclerOptions.Builder<songs>()
-                    .setQuery(FirebaseDatabase.getInstance().getReference().child("songs"), songs.class)
-                    .build();
+                new FirebaseRecyclerOptions.Builder<songs>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("songs"), songs.class)
+                        .build();
         music_adapter = new music_adapter(options);
         recyclerView.setAdapter(music_adapter);
         music_adapter.notifyDataSetChanged();
         return view;
     }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -100,5 +104,7 @@ public class HealingMusicFragment extends Fragment {
         super.onStop();
         music_adapter.stopListening();
     }
+
+
 
 }

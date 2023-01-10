@@ -8,56 +8,56 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/songview"
-        android:layout_width="match_parent"
-        android:layout_height="740dp"
+        android:layout_width="410dp"
+        android:layout_height="370dp"
         android:clipToPadding="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.506" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/anton"
+        android:fontFamily="@font/baloo_tammudu"
         android:includeFontPadding="false"
         android:text="&quot;MUSIC&quot;"
         android:textColor="#E7E7E7"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.394"
+        app:layout_constraintHorizontal_bias="0.369"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.014" />
+        app:layout_constraintVertical_bias="0.006" />
 
     <TextView
         android:id="@+id/heading3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:fontFamily="sans-serif"
-        android:text="Relax, says"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/baloo_tammudu"
+        android:text="SWASTHA"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/heading"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/heading"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="80dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="120dp"
-        app:layout_constraintBottom_toBottomOf="@+id/heading"
+        android:id="@+id/imageView8"
+        android:layout_width="30dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="608dp"
+        app:layout_constraintBottom_toBottomOf="@+id/songview"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/heading"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/musicbg" />
+        app:srcCompat="@drawable/mainbw2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

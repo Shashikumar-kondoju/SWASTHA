@@ -1,5 +1,6 @@
 package com.androiddev.projectrelief.Adapters;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ public class music_adapter extends FirebaseRecyclerAdapter<songs, music_adapter.
         super(options);
     }
 
+
     @Override
     protected void onBindViewHolder(@NonNull myviewholder holder, int position, @NonNull songs model) {
         Glide.with(holder.imagem.getContext()).load(model.getImg()).into(holder.imagem);
@@ -31,19 +33,27 @@ public class music_adapter extends FirebaseRecyclerAdapter<songs, music_adapter.
     @NonNull
     @Override
     public myviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview, parent, false);
         return new myviewholder(view);
     }
 
-    class myviewholder extends RecyclerView.ViewHolder{
+    class myviewholder extends RecyclerView.ViewHolder {
 
         ImageView imagem;
-        TextView song,description;
+        TextView song, description;
+
         public myviewholder(@NonNull View itemView) {
             super(itemView);
-            imagem = (ImageView)itemView.findViewById(R.id.imagem);
-            song = (TextView)itemView.findViewById(R.id.song);
-            description = (TextView)itemView.findViewById(R.id.description);
+            imagem = (ImageView) itemView.findViewById(R.id.imagem);
+            song = (TextView) itemView.findViewById(R.id.song);
+            description = (TextView) itemView.findViewById(R.id.description);
         }
     }
-}
+
+
+    }
+
+
+
+
+
