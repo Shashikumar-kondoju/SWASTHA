@@ -280,10 +280,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Exercise"
+                    android:fontFamily="@font/baloo_tammudu"
+                    android:text="EXERCISE"
                     android:textAlignment="center"
                     android:textColor="#2e3d6d"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -320,10 +321,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Music"
+                    android:fontFamily="@font/baloo_tammudu"
+                    android:text="MUSIC"
                     android:textAlignment="center"
                     android:textColor="#2e3d6d"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -360,10 +362,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Breathing"
+                    android:fontFamily="@font/baloo_tammudu"
+                    android:text="BREATHE"
                     android:textAlignment="center"
                     android:textColor="#2e3d6d"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -388,11 +391,10 @@
                         android:layout_marginEnd="16dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.214"
-                        app:srcCompat="@drawable/nutrition"/>
+                        app:srcCompat="@drawable/nutrition" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
@@ -400,10 +402,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Nutrition"
+                    android:fontFamily="@font/baloo_tammudu"
+                    android:text="NUTRITION"
                     android:textAlignment="center"
                     android:textColor="#2e3d6d"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
 

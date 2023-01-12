@@ -30,6 +30,8 @@ public class music_adapter extends FirebaseRecyclerAdapter<songs, music_adapter.
         holder.description.setText(model.getDescription());
     }
 
+
+
     @NonNull
     @Override
     public myviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -48,6 +50,8 @@ public class music_adapter extends FirebaseRecyclerAdapter<songs, music_adapter.
             song = (TextView) itemView.findViewById(R.id.song);
             description = (TextView) itemView.findViewById(R.id.description);
         }
+
+
     }
 
 
