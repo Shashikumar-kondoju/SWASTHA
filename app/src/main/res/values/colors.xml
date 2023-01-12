@@ -10,4 +10,9 @@
     <color name="colorIcons">#FFFFFF</color>
     <color name="light_orange">#FFD580</color>
     <color name="violet">#6900FF</color>
+    <color name="colorAccent">#F9AA33</color>
+    <color name="textColor">#232F34</color>
+    <color name="backgroundPlayer">#E0E0E0</color>
+    <color name="colorPrimaryDark">#4A6572</color>
+    <color name="colorPrimary">#344955</color>
 </resources>
