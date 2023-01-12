@@ -69,30 +69,6 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_home,container , false);
-
-        imageViewExercise = (ImageView)view.findViewById(R.id.imageViewExercise);
-        imageViewExercise.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Fragment fragment = new YogaCategoriesFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frame,fragment);
-                fragmentTransaction.commit();
-            }
-        });
-
-        imageViewMusic = (ImageView)view.findViewById(R.id.imageViewMusic);
-        imageViewMusic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Fragment fragment = new HealingMusicFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frame,fragment);
-                fragmentTransaction.commit();
-            }
-        });
         return view;
     }
 }

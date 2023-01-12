@@ -23,6 +23,6 @@
         android:layout_below="@id/logo"
         android:layout_margin="45dp"
         android:textColor="@color/black"
-        android:fontFamily="@font/roboto_bold_italic"
+        android:fontFamily="@font/baloo_tammudu"
         android:textSize="40sp"/>
 </RelativeLayout>
