@@ -4,17 +4,109 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".Fragments.AboutUsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-   <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/about_us"
-        android:textSize="40sp"
-        android:theme="@style/Theme.Material3.DynamicColors.DayNight"
-        android:layout_margin="30dp"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/textView10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.605"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="18dp"
+                android:layout_weight="1"
+                android:src="@drawable/main_logo" />
+
+            <ImageView
+                android:id="@+id/imageView13"
+                android:layout_width="28dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="18dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:src="@drawable/insta" />
+
+            <ImageView
+                android:id="@+id/imageView13"
+                android:layout_width="25dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="18dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:src="@drawable/twt" />
+
+            <ImageView
+                android:id="@+id/imageView13"
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:src="@drawable/lin" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="130dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/baloo_tammudu"
+            android:gravity="center_vertical"
+            android:text="@string/about_us"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.056"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="390dp"
+            android:layout_height="350dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.476"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ScrollView
+            android:layout_width="411dp"
+            android:layout_height="245dp"
+            android:layout_marginBottom="40dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toTopOf="@+id/webView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="SpeakableTextPresentCheck"/>
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/baloo_tammudu"
+            android:text="Latest from us"
+            android:textColor="@color/black"
+            android:fillViewport="true"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/webView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.043"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
-
