@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:text="@string/about_us"
         android:textSize="40sp"
-        android:textColor="@color/black"
+        android:theme="@style/Theme.Material3.DynamicColors.DayNight"
         android:layout_margin="30dp"/>
 
 </FrameLayout>
