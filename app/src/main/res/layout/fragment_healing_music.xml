@@ -18,21 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-    <TextView
-        android:id="@+id/heading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/anton"
-        android:includeFontPadding="false"
-        android:text="MUSIC"
-        android:textColor="#E7E7E7"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.369"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.006" />
+
 
     <TextView
         android:id="@+id/heading3"
@@ -40,10 +26,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
-        android:fontFamily="@font/anton"
-        android:text="SWASTHA"
+        android:fontFamily="@font/baloo_tammudu"
+        android:text="SWASTHA MUSIC"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,14 +37,12 @@
         android:id="@+id/imageView8"
         android:layout_width="30dp"
         android:layout_height="45dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginBottom="608dp"
-        app:layout_constraintBottom_toBottomOf="@+id/songview"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/heading"
+        app:layout_constraintHorizontal_bias="0.062"
+        app:layout_constraintStart_toEndOf="@+id/heading3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.129"
         app:srcCompat="@drawable/mainbw2" />
 
     <TextView
@@ -94,6 +78,7 @@
         app:layout_constraintVertical_bias="0.982" />
 
     <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
         android:layout_width="match_parent"
         android:layout_height="152dp"
         android:fillViewport="true"
@@ -107,7 +92,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="100dp"
@@ -168,7 +153,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/diet" />
+                        app:srcCompat="@drawable/nature" />
 
                     <TextView
                         android:id="@+id/textView8"
@@ -285,9 +270,9 @@
                         android:layout_height="43dp"
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/anton"
-                        android:textColor="@color/white"
                         android:gravity="center_horizontal|center_vertical"
                         android:text="TextView"
+                        android:textColor="@color/white"
                         android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
