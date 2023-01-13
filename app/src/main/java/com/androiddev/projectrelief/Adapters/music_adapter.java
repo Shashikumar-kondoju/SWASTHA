@@ -1,6 +1,5 @@
 package com.androiddev.projectrelief.Adapters;
 
-import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +24,8 @@ public class music_adapter extends FirebaseRecyclerAdapter<songs, music_adapter.
 
     @Override
     protected void onBindViewHolder(@NonNull myviewholder holder, int position, @NonNull songs model) {
-        Glide.with(holder.imagem.getContext()).load(model.getImg()).into(holder.imagem);
-        holder.song.setText(model.getSong());
+        Glide.with(holder.imgLink.getContext()).load(model.getImgLink()).into(holder.imgLink);
+        holder.songName.setText(model.getSongName());
         holder.description.setText(model.getDescription());
     }
 
@@ -39,23 +38,20 @@ public class music_adapter extends FirebaseRecyclerAdapter<songs, music_adapter.
         return new myviewholder(view);
     }
 
-    class myviewholder extends RecyclerView.ViewHolder {
+    class myviewholder extends RecyclerView.ViewHolder  {
 
-        ImageView imagem;
-        TextView song, description;
+        ImageView imgLink;
+        TextView songName, description;
 
         public myviewholder(@NonNull View itemView) {
             super(itemView);
-            imagem = (ImageView) itemView.findViewById(R.id.imagem);
-            song = (TextView) itemView.findViewById(R.id.song);
+            imgLink = (ImageView) itemView.findViewById(R.id.imagem);
+            songName = (TextView) itemView.findViewById(R.id.song);
             description = (TextView) itemView.findViewById(R.id.description);
         }
-
-
     }
 
-
-    }
+}
 
 
 
