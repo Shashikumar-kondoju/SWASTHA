@@ -1,27 +1,38 @@
 package com.androiddev.projectrelief.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.androiddev.projectrelief.Adapters.ViewPagerAdapter;
 import com.androiddev.projectrelief.R;
+import com.google.android.gms.dynamic.SupportFragmentWrapper;
+
+import org.checkerframework.checker.units.qual.A;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements View.OnClickListener {
 
-    ImageView imageViewExercise;
-    ImageView imageViewMusic;
+    CardView yogaCard,musicCard;
+    ViewPager viewPager;
+    ArrayList<Integer> images = new ArrayList<>();
+    ViewPagerAdapter adapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -65,10 +76,43 @@ public class HomeFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)  {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_home,container , false);
+
+        yogaCard = (CardView) view.findViewById(R.id.yoga_card);
+        musicCard = (CardView) view.findViewById(R.id.music_card);
+
+        yogaCard.setOnClickListener(this);
+        musicCard.setOnClickListener(this);
+
+        viewPager = view.findViewById(R.id.viewPager);
+        images.add(R.drawable.quote_1);
+        images.add(R.drawable.quote_2);
+        images.add(R.drawable.quote_3);
+
+        adapter = new ViewPagerAdapter(getContext(),images);
+        viewPager.setAdapter(adapter);
+        viewPager.setPadding(20,0,20,0);
+
         return view;
+    }
+
+    @Override
+    public void onClick(View view) {
+        Fragment fragment;
+        switch (view.getId()){
+            case R.id.yoga_card: fragment = new YogaCategoriesFragment();
+                break;
+            case R.id.music_card: fragment = new HealingMusicFragment();
+                break;
+            default: fragment = new HomeFragment();
+                break;
+        }
+        getFragmentManager().beginTransaction()
+                .replace(R.id.frame,fragment)
+                .addToBackStack(null)
+                .commit();
     }
 }
