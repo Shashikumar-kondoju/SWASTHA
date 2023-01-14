@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -74,8 +74,8 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <WebView
-            android:id="@+id/webView"
-            android:layout_width="390dp"
+            android:id="@+id/web"
+            android:layout_width="380dp"
             android:layout_height="350dp"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -93,7 +93,7 @@
             android:textColor="@color/black"
             android:fillViewport="true"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/webView"
+            app:layout_constraintBottom_toTopOf="@+id/web"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.043"
             app:layout_constraintStart_toStartOf="parent" />
@@ -132,4 +132,4 @@
         </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+</RelativeLayout>

@@ -1,16 +1,12 @@
 package com.androiddev.projectrelief.Fragments;
 
-import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+
+import androidx.fragment.app.Fragment;
 
 import com.androiddev.projectrelief.R;
 
@@ -21,6 +17,8 @@ import com.androiddev.projectrelief.R;
  */
 public class AboutUsFragment extends Fragment {
 
+    public WebView webView;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,6 +27,7 @@ public class AboutUsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
 
 
     public AboutUsFragment() {
@@ -53,14 +52,15 @@ public class AboutUsFragment extends Fragment {
         return fragment;
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        WebView myWebView = (WebView) findViewById(R.id.web);
+        myWebView.loadUrl("http://www.twitter.com");
+
     }
+
 
 
 
@@ -71,8 +71,6 @@ public class AboutUsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_about_us, container, false);
         return view;
     }
-
-
 
 
 }
