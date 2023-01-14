@@ -68,7 +68,7 @@ public class AboutUsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_about_us, container, false);
 
         WebView myWebView = getView().findViewById(R.id.web);
-        myWebView.loadUrl("http://www.twitter.com");
+        myWebView.loadUrl("http://www.google.com");
         return view;
     }
 
