@@ -5,8 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,6 +19,7 @@ import com.androiddev.projectrelief.Adapters.music_adapter;
 import com.androiddev.projectrelief.Models.songs;
 import com.androiddev.projectrelief.R;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.FirebaseDatabase;
 
 /**
@@ -22,7 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
  * Use the {@link HealingMusicFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HealingMusicFragment extends Fragment {
+public class HealingMusicFragment extends Fragment  {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -83,10 +88,32 @@ public class HealingMusicFragment extends Fragment {
                 new FirebaseRecyclerOptions.Builder<songs>()
                         .setQuery(FirebaseDatabase.getInstance().getReference().child("songs"), songs.class)
                         .build();
-        music_adapter = new music_adapter(options);
+        music_adapter = new music_adapter(options,getContext());
         recyclerView.setAdapter(music_adapter);
         music_adapter.notifyDataSetChanged();
+        music_adapter.setOnItemClickListener(new music_adapter.onRecyclerViewItemClickListener() {
+            @Override
+            public void onItemClickListener(View view, int position,songs model) {
+                Bundle bundle = new Bundle();
+                bundle.putString("songName",model.getSongName());
+                bundle.putString("songLink",model.getSongLink());
+                bundle.putString("imgLink",model.getImgLink());
+                bundle.putString("songDuration",model.getSongDuration());
+                bundle.putString("description",model.getDescription());
+                Fragment fragment = new MusicPlayerFragment();
+                fragment.setArguments(bundle);
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frame,fragment);
+                fragmentTransaction.commit();
+            }
+        });
+
         return view;
+    }
+
+    public void onClickAdapter(FirebaseRecyclerOptions<songs> options){
+
     }
 
     @Override
@@ -101,6 +128,4 @@ public class HealingMusicFragment extends Fragment {
         music_adapter.stopListening();
 
     }
-
-
 }

@@ -1,170 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundPlayer">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_cd"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        app:cardCornerRadius="150dp"
-        app:cardElevation="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.15">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_cd"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            app:cardCornerRadius="150dp"
+            app:cardElevation="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.15">
+
+            <ImageView
+                android:id="@+id/img_music"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_song"
+                android:contentDescription="TODO" />
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:src="@drawable/img_circle" />
+        </com.google.android.material.card.MaterialCardView>
 
         <ImageView
-            android:id="@+id/img_music"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/img_song"
-            android:contentDescription="TODO" />
-
-        <ImageView
+            android:id="@+id/imageView"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:layout_gravity="center"
-            android:src="@drawable/img_circle" />
-    </com.google.android.material.card.MaterialCardView>
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="12dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/txt_lyrics"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorAccent"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:text=" ' get relaxed ! ' "
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/layout_player"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:padding="15dp"
-        app:layout_constraintTop_toBottomOf="@id/card_cd">
-
-    </com.google.android.material.textview.MaterialTextView>
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_player"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginTop="80dp"
-        android:background="@drawable/bg_player"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.5">
-
-        <SeekBar
-            android:id="@+id/seek_progress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txt_singer_name"
-            style="@style/TextAppearance.MaterialComponents.Headline6"
-            android:layout_width="wrap_content"
+            android:id="@+id/txt_lyrics"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Unknown"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/seek_progress" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txt_song_name"
-            style="@style/TextAppearance.MaterialComponents.Headline4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lonely"
-            android:textColor="@color/textColor"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:text=" ' get relaxed ! ' "
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/layout_player"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_singer_name" />
+            android:padding="15dp"
+            app:layout_constraintTop_toBottomOf="@id/card_cd">
 
-        <ImageView
-            android:id="@+id/btn_shuffle"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginBottom="20dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_shuffle"
-            app:layout_constraintEnd_toStartOf="@+id/btn_pre"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"  />
-
-        <ImageView
-            android:id="@+id/btn_pre"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginBottom="20dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_previous"
-            app:layout_constraintEnd_toStartOf="@+id/btn_play"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/btn_shuffle"
-            app:layout_constraintBottom_toBottomOf="parent"  />
-
-        <ImageView
-            android:id="@+id/btn_play"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginBottom="20dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_play"
-            app:layout_constraintEnd_toStartOf="@+id/btn_next"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/btn_pre"
+        </com.google.android.material.textview.MaterialTextView>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_player"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/bg_player"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@drawable/ic_ring"/>
-
-        <ImageView
-            android:id="@+id/btn_next"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginBottom="20dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_next"
-            app:layout_constraintEnd_toStartOf="@+id/btn_loop"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/btn_play"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
-
-        <ImageView
-            android:id="@+id/btn_loop"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginBottom="20dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_loop"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/btn_next"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.5">
+
+            <SeekBar
+                android:id="@+id/seek_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txt_singer_name"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Unknown"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/seek_progress" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txt_song_name"
+                style="@style/TextAppearance.MaterialComponents.Headline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lonely"
+                android:textColor="@color/textColor"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_singer_name" />
+
+            <ImageView
+                android:id="@+id/btn_shuffle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginBottom="20dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_shuffle"
+                app:layout_constraintEnd_toStartOf="@+id/btn_pre"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"  />
+
+            <ImageView
+                android:id="@+id/btn_pre"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginBottom="20dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_previous"
+                app:layout_constraintEnd_toStartOf="@+id/btn_play"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/btn_shuffle"
+                app:layout_constraintBottom_toBottomOf="parent"  />
+
+            <ImageView
+                android:id="@+id/btn_play"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginBottom="20dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_play"
+                app:layout_constraintEnd_toStartOf="@+id/btn_next"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/btn_pre"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:background="@drawable/ic_ring"/>
+
+            <ImageView
+                android:id="@+id/btn_next"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginBottom="20dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_next"
+                app:layout_constraintEnd_toStartOf="@+id/btn_loop"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/btn_play"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            <ImageView
+                android:id="@+id/btn_loop"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginBottom="20dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_loop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/btn_next"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
