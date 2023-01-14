@@ -56,9 +56,6 @@ public class AboutUsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        WebView myWebView = (WebView) findViewById(R.id.web);
-        myWebView.loadUrl("http://www.twitter.com");
-
     }
 
 
@@ -69,6 +66,9 @@ public class AboutUsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_about_us, container, false);
+
+        WebView myWebView = getView().findViewById(R.id.web);
+        myWebView.loadUrl("http://www.twitter.com");
         return view;
     }
 
