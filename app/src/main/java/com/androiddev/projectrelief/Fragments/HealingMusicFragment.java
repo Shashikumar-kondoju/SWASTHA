@@ -22,6 +22,9 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link HealingMusicFragment#newInstance} factory method to
@@ -93,13 +96,18 @@ public class HealingMusicFragment extends Fragment  {
         music_adapter.notifyDataSetChanged();
         music_adapter.setOnItemClickListener(new music_adapter.onRecyclerViewItemClickListener() {
             @Override
-            public void onItemClickListener(View view, int position,songs model) {
+            public void onItemClickListener(View view, int position,FirebaseRecyclerOptions<songs> songsList) {
                 Bundle bundle = new Bundle();
-                bundle.putString("songName",model.getSongName());
-                bundle.putString("songLink",model.getSongLink());
-                bundle.putString("imgLink",model.getImgLink());
-                bundle.putString("songDuration",model.getSongDuration());
-                bundle.putString("description",model.getDescription());
+//                bundle.putString("songName",model.getSongName());
+//                bundle.putString("songLink",model.getSongLink());
+//                bundle.putString("imgLink",model.getImgLink());
+//                bundle.putString("songDuration",model.getSongDuration());
+//                bundle.putString("description",model.getDescription());
+                ArrayList<songs> songsL = new ArrayList<>();
+                for(int i=0;i<music_adapter.getItemCount();i++){
+                    songsL.add(songsList.getSnapshots().get(i));
+                }
+                bundle.putSerializable("LIST",(Serializable) songsL);
                 Fragment fragment = new MusicPlayerFragment();
                 fragment.setArguments(bundle);
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
