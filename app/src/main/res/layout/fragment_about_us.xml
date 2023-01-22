@@ -11,23 +11,6 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginBottom="100dp"
-            android:fillViewport="true"
-            android:fontFamily="@font/baloo_tammudu"
-            android:text=" follow us on "
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.089"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.825" />
-
-        <TextView
             android:id="@+id/textView10"
             android:layout_width="100dp"
             android:layout_height="30dp"
@@ -45,7 +28,7 @@
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="380dp"
-            android:layout_height="500dp"
+            android:layout_height="470dp"
             android:layout_marginTop="60dp"
             android:src="@drawable/banner_background"
             app:layout_constraintEnd_toEndOf="parent"
@@ -81,11 +64,26 @@
                 android:layout_width="350dp"
                 android:layout_height="170dp"
                 android:layout_gravity="center_horizontal"
-                android:fontFamily="@font/anton"
+                android:fontFamily="sans-serif-light"
                 android:text="SWASTHA started with an idea to acknowledge people about yoga asanas and their benefits. Further brainstorming evolved this idea into an application that should be known for its information on healthy lifestyle through yoga and spreading peace. This made us start working, and here we are with our application. We are a group of four friends who just wanted to do something exciting (which also turned to be helpful for those using this app) as part of their career growth. After months of information gathering, app development finally we crossed the finish line. We are not willing to be a champion with this app but we are treating it as a starting point of our journey to many more. Someday again we might cross our paths. That day we all know where it all began. Eagerly WORKING to witness that moment Until then we are here to serve you with SWASTHA."
                 android:textColor="@color/black"
                 android:textSize="16sp" />
         </ScrollView>
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginBottom="180dp"
+            android:fillViewport="true"
+            android:fontFamily="@font/baloo_tammudu"
+            android:text=" follow us on "
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.082"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <LinearLayout
             android:layout_width="240dp"

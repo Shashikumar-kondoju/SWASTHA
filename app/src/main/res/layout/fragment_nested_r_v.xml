@@ -9,8 +9,9 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/nested_rec_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/nested_rec_view"/>
+        android:layout_marginRight="5dp" />
 
 </FrameLayout>
