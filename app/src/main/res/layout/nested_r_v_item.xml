@@ -23,8 +23,8 @@
 
             <ImageView
                 android:id="@+id/image"
-                android:layout_width="400dp"
-                android:layout_height="240dp"
+                android:layout_width="410dp"
+                android:layout_height="250dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:src="@drawable/logo"
@@ -39,14 +39,14 @@
                 android:layout_width="200dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="4dp"
-                android:fontFamily="@font/anton"
+                android:fontFamily="sans-serif-medium"
                 android:gravity="top"
                 android:text="@string/username"
                 android:textColor="#000000"
                 android:textSize="17sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.158"
+                app:layout_constraintHorizontal_bias="0.094"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,13 +54,14 @@
                 android:id="@+id/tag_title"
                 android:layout_width="300dp"
                 android:layout_height="30dp"
-                android:fontFamily="@font/anton"
+                android:fontFamily="sans-serif-medium"
                 android:gravity="right|center_vertical"
                 android:text="@string/sub_title_of_asana"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.771"
                 app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
