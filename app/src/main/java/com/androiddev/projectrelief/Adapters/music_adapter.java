@@ -52,8 +52,6 @@ public class music_adapter extends FirebaseRecyclerAdapter<songs, music_adapter.
         });
     }
 
-
-
     @NonNull
     @Override
     public myviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
