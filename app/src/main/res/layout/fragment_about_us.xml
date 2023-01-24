@@ -11,23 +11,6 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginBottom="100dp"
-            android:fillViewport="true"
-            android:fontFamily="@font/baloo_tammudu"
-            android:text=" follow us on "
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.089"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.825" />
-
-        <TextView
             android:id="@+id/textView10"
             android:layout_width="100dp"
             android:layout_height="30dp"
@@ -66,12 +49,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ScrollView
-            android:layout_width="400dp"
-            android:layout_height="450dp"
-            android:layout_marginTop="84dp"
+            android:id="@+id/scrollView2"
+            android:layout_width="380dp"
+            android:layout_height="370dp"
+            android:layout_marginTop="76dp"
             android:fillViewport="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.454"
+            app:layout_constraintHorizontal_bias="0.451"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck">
@@ -81,11 +65,27 @@
                 android:layout_width="350dp"
                 android:layout_height="170dp"
                 android:layout_gravity="center_horizontal"
-                android:fontFamily="@font/anton"
-                android:text="SWASTHA started with an idea to acknowledge people about yoga asanas and their benefits. Further brainstorming evolved this idea into an application that should be known for its information on healthy lifestyle through yoga and spreading peace. This made us start working, and here we are with our application. We are a group of four friends who just wanted to do something exciting (which also turned to be helpful for those using this app) as part of their career growth. After months of information gathering, app development finally we crossed the finish line. We are not willing to be a champion with this app but we are treating it as a starting point of our journey to many more. Someday again we might cross our paths. That day we all know where it all began. Eagerly WORKING to witness that moment Until then we are here to serve you with SWASTHA."
-                android:textColor="@color/black"
+                android:fontFamily="sans-serif-light"
+                android:text="SWASTHA \nstarted with an idea to acknowledge people about yoga asanas and their benefits.\n\nFurther brainstorming evolved this idea into an application that should be known for its information on healthy lifestyle through yoga and spreading peace.\n\nThis made us start working, and here we are with our application.\n\nWe are a group of four friends who just wanted to do something exciting (which also turned to be helpful for those using this app) as part of their career growth.\n\nAfter months of information gathering, app development finally we crossed the finish line.\n\nWe are not willing to be a champion with this app but we are treating it as a starting point of our journey to many more.\n\nSomeday again we might cross our paths.\n\nThat day we all know where it all began.\n\nEagerly WORKING to witness that moment Until then we are here to serve you with SWASTHA."
+                android:textColor="@color/white"
+                android:textStyle="normal"
                 android:textSize="16sp" />
         </ScrollView>
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginBottom="185dp"
+            android:fillViewport="true"
+            android:fontFamily="@font/baloo_tammudu"
+            android:text=" follow us on "
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.082"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <LinearLayout
             android:layout_width="240dp"
@@ -195,6 +195,38 @@
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/anton"
+            android:text="Swastha. \nTo serve you."
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.099"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="160dp"
+            android:fontFamily="@font/anton"
+            android:text="Know\nMore."
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.725"
+            app:layout_constraintStart_toEndOf="@+id/textView4"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.804" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>
