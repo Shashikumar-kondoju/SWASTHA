@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        android:fontFamily="@font/baloo_tammudu"
+        android:fontFamily="@font/bangers"
         android:text="Asanas for you"
         android:textColor="@color/black"
         android:textSize="20sp"

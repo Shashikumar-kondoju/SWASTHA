@@ -1,38 +1,52 @@
 package com.androiddev.projectrelief.Fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.androiddev.projectrelief.Adapters.ViewPagerAdapter;
+import com.androiddev.projectrelief.Adapters.ydadapter;
+import com.androiddev.projectrelief.Models.ydmodel;
 import com.androiddev.projectrelief.R;
-import com.google.android.gms.dynamic.SupportFragmentWrapper;
-
-import org.checkerframework.checker.units.qual.A;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.zip.Inflater;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
-    CardView yogaCard,musicCard;
+    CardView yogaCard, musicCard;
     ViewPager viewPager;
     ArrayList<Integer> images = new ArrayList<>();
     ViewPagerAdapter adapter;
+    private RecyclerView recyclerView;
+    private ydadapter ydAdapter;
+    private List<ydmodel> ydModelList;
+
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -42,6 +56,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -58,31 +73,55 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     // TODO: Rename and change types and number of parameters
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
+
         return fragment;
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)  {
+                             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view = inflater.inflate(R.layout.fragment_home,container , false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        yogaCard = (CardView) view.findViewById(R.id.yoga_card);
+
+        recyclerView = view.findViewById(R.id.dailyyoga);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        ydModelList = new ArrayList<>();
+        ydAdapter = new ydadapter(getActivity(), ydModelList);
+
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("dailyoga");
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    ydmodel ydModel = snapshot.getValue(ydmodel.class);
+                    ydModelList.add(ydModel);
+                }
+                recyclerView.setAdapter(ydAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+        yogaCard = (CardView) view.findViewById(R.id.yoga);
         musicCard = (CardView) view.findViewById(R.id.music_card);
+
 
         yogaCard.setOnClickListener(this);
         musicCard.setOnClickListener(this);
@@ -103,7 +142,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         Fragment fragment;
         switch (view.getId()){
-            case R.id.yoga_card: fragment = new YogaCategoriesFragment();
+            case R.id.yoga: fragment = new YogaCategoriesFragment();
                 break;
             case R.id.music_card: fragment = new HealingMusicFragment();
                 break;

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.HomeFragment">
 
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="0dp"
@@ -16,55 +17,28 @@
         android:fontFamily="@font/baloo_tammudu"
         android:text="@string/dashboard"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.061"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/searchview_background"
-        android:elevation="10dp"
-        app:iconifiedByDefault="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:queryHint="Search" />
-
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
-        android:layout_marginTop="40dp"
-        android:clipToPadding="false"
+        android:layout_height="180dp"
+        android:layout_marginTop="48dp"
 
+        android:clipToPadding="false"
         android:overScrollMode="never"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <com.rd.PageIndicatorView
-        android:id="@+id/pageIndicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewPager"
-        app:piv_animationType="scale"
-        app:piv_dynamicCount="true"
-        app:piv_interactiveAnimation="true"
-        app:piv_selectedColor="@color/black"
-        app:piv_unselectedColor="@color/colorPrimary"
-        app:piv_viewPager="@id/viewPager" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -73,15 +47,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/yoga_card"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/yoga"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="400dp"
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
+        app:cardBackgroundColor="#FAF7ED"
         app:cardCornerRadius="10dp"
         app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -93,8 +69,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
             app:layout_constraintStart_toStartOf="parent"
@@ -102,34 +78,95 @@
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="80dp"
+                android:layout_height="58dp"
                 android:src="@drawable/yoga_icon"
 
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.066" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo_tammudu"
-                android:text="Yoga asanas"
+                android:text="@string/yoga_asanas"
                 android:textColor="@color/black"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                app:layout_constraintVertical_bias="1.0" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/yoga"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginRight="70dp"
+        android:layout_marginBottom="400dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardBackgroundColor="#FAF7ED"
+        app:cardCornerRadius="10dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintStart_toEndOf="@+id/yoga"
+        app:layout_constraintTop_toBottomOf="@+id/viewPager"
+        app:layout_constraintVertical_bias="0.356">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchView">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/nutrition"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.511"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.232" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:fontFamily="@font/baloo_tammudu"
+                android:text="Nutrition"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                app:layout_constraintVertical_bias="0.25" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/music_card"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="400dp"
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
+        app:cardBackgroundColor="#FAF7ED"
         app:cardCornerRadius="10dp"
         app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -141,8 +178,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/card"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/constraintLayout"
@@ -150,14 +187,15 @@
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/healing_music"
+                android:layout_width="60dp"
+                android:layout_height="55dp"
+                android:src="@drawable/music"
 
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.151" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -165,14 +203,48 @@
                 android:fontFamily="@font/baloo_tammudu"
                 android:text="Healing music"
                 android:textColor="@color/black"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                app:layout_constraintVertical_bias="1.0" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent">
 
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/baloo_tammudu"
+            android:text="Daily yoga"
+            android:textColor="@color/black" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dailyyoga"
+            android:layout_width="400dp"
+            android:layout_height="140dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="204dp"
+            android:orientation="horizontal"
+            app:reverseLayout="true">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

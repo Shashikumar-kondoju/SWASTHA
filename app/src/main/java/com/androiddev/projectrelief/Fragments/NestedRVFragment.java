@@ -1,5 +1,6 @@
 package com.androiddev.projectrelief.Fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ViewSwitcher;
 
 import com.androiddev.projectrelief.Models.NestedModel;
 import com.androiddev.projectrelief.Adapters.NestedRVAdapter;
@@ -80,6 +82,11 @@ public class NestedRVFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_nested_r_v, container, false);
+
+
+
+
+
         String str;
         Bundle bundle = this.getArguments();
         str = (String)bundle.getString("key");
@@ -119,5 +126,8 @@ public class NestedRVFragment extends Fragment {
     public void onStop() {
         super.onStop();
         nestedRVAdapter.stopListening();
+    }
+
+    private class LoadContentTask {
     }
 }
