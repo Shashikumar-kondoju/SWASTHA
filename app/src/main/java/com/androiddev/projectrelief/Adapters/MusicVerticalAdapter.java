@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.androiddev.projectrelief.Models.NestedModel;
+import com.androiddev.projectrelief.Models.songs;
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -25,10 +26,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ydadapter extends FirebaseRecyclerAdapter<ydmodel, ydadapter.ViewHolder> {
+public class MusicVerticalAdapter extends FirebaseRecyclerAdapter<songs,MusicVerticalAdapter.ViewHolder> {
     private Context context;
 
-    public ydadapter(@NonNull FirebaseRecyclerOptions<ydmodel> options, Context context) {
+    public MusicVerticalAdapter(@NonNull FirebaseRecyclerOptions<songs> options, Context context) {
         super(options);
         this.context = context;
     }
@@ -36,20 +37,20 @@ public class ydadapter extends FirebaseRecyclerAdapter<ydmodel, ydadapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.horizontal_rv_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.vertical_rv_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull ydmodel model) {
-        Glide.with(holder.img.getContext()).load(model.getLink()).into(holder.img);
+    protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull songs model) {
+        Glide.with(holder.img.getContext()).load(model.getImgLink()).into(holder.img);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView img;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            img = itemView.findViewById(R.id.yogaimg);
+            img = itemView.findViewById(R.id.musicimg);
         }
     }
 }

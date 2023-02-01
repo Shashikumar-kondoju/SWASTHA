@@ -14,10 +14,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.androiddev.projectrelief.Adapters.MusicVerticalAdapter;
+import com.androiddev.projectrelief.Adapters.NestedRVAdapter;
 import com.androiddev.projectrelief.Adapters.ViewPagerAdapter;
 import com.androiddev.projectrelief.Adapters.ydadapter;
+import com.androiddev.projectrelief.Models.NestedModel;
+import com.androiddev.projectrelief.Models.songs;
 import com.androiddev.projectrelief.Models.ydmodel;
 import com.androiddev.projectrelief.R;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,13 +45,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     ViewPager viewPager;
     ArrayList<Integer> images = new ArrayList<>();
     ViewPagerAdapter adapter;
-    private RecyclerView recyclerView;
-    private ydadapter ydAdapter;
-    private List<ydmodel> ydModelList;
-
-    private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databaseReference;
-
+    private RecyclerView recyclerView1;
+    ydadapter ydAdapter1;
+    LinearLayoutManager ydLayoutManager1;
+    FirebaseRecyclerOptions<ydmodel> options1;
+    private RecyclerView recyclerView2;
+    MusicVerticalAdapter musicAdapter2;
+    LinearLayoutManager musicLayoutManager2;
+    FirebaseRecyclerOptions<songs> options2;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -91,37 +97,33 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        recyclerView1 = view.findViewById(R.id.dailyyoga);
+        ydLayoutManager1 = new LinearLayoutManager(getActivity());
+        ydLayoutManager1.setOrientation(RecyclerView.HORIZONTAL);
+        recyclerView1.setLayoutManager(ydLayoutManager1);
+        options1 =
+                new FirebaseRecyclerOptions.Builder<ydmodel>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("dailyoga"), ydmodel.class)
+                        .build();
+        ydAdapter1 = new ydadapter(options1,getContext());
+        recyclerView1.setAdapter(ydAdapter1);
+        ydAdapter1.notifyDataSetChanged();
 
-        recyclerView = view.findViewById(R.id.dailyyoga);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        ydModelList = new ArrayList<>();
-        ydAdapter = new ydadapter(getActivity(), ydModelList);
-
-
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("dailyoga");
-
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    ydmodel ydModel = snapshot.getValue(ydmodel.class);
-                    ydModelList.add(ydModel);
-                }
-                recyclerView.setAdapter(ydAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        recyclerView2 = view.findViewById(R.id.music_recent);
+        musicLayoutManager2 = new LinearLayoutManager(getActivity());
+        musicLayoutManager2.setOrientation(RecyclerView.HORIZONTAL);
+        recyclerView2.setLayoutManager(musicLayoutManager2);
+        options2 =
+                new FirebaseRecyclerOptions.Builder<songs>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("songs"), songs.class)
+                        .build();
+        musicAdapter2 = new MusicVerticalAdapter(options2,getContext());
+        recyclerView2.setAdapter(musicAdapter2);
+        musicAdapter2.notifyDataSetChanged();
 
 
         yogaCard = (CardView) view.findViewById(R.id.yoga);
         musicCard = (CardView) view.findViewById(R.id.music_card);
-
 
         yogaCard.setOnClickListener(this);
         musicCard.setOnClickListener(this);
@@ -153,5 +155,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 .replace(R.id.frame,fragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        ydAdapter1.startListening();
+        musicAdapter2.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        ydAdapter1.stopListening();
+        musicAdapter2.stopListening();
     }
 }
