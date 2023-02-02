@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundPlayer">
+    android:background="@drawable/musicbg">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:layout_marginTop="80dp"
-            android:background="@drawable/bg_player"
+            android:background="@drawable/banner_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
