@@ -17,10 +17,17 @@ import android.widget.Toast;
 
 import com.androiddev.projectrelief.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.jar.Attributes;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -29,15 +36,19 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     ProgressDialog progressDialog;
+    String username;
 
     FirebaseAuth mAuth;
     FirebaseUser mUser;
+    FirebaseFirestore firebaseFirestore;
+    CollectionReference reference;
 
     SharedPreferences sharedPreferences;
 
     public static final String fileName = "login";
     public static final String Email = "email";
     public static final String Password = "password";
+    public static final String Name = "name";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
-
+        firebaseFirestore = FirebaseFirestore.getInstance();
         sharedPreferences = getSharedPreferences(fileName, Context.MODE_PRIVATE);
 
         if(sharedPreferences.contains(Email)){
@@ -77,7 +88,6 @@ public class LoginActivity extends AppCompatActivity {
     private void preformLogin() {
         String email = inputEmail.getText().toString();
         String password = inputPass.getText().toString();
-
         if(!email.matches(emailPattern)){
             inputEmail.setError("Enter correct email!");
         }else if(password.isEmpty()||password.length()<6){
@@ -88,21 +98,29 @@ public class LoginActivity extends AppCompatActivity {
             progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.show();
 
-            mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            mAuth.signInWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
+                public void onSuccess(@NonNull AuthResult authResult) {
+//                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+//                    db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+//                            .get().addOnCompleteListener(task -> {
+//                                if(task.isSuccessful() && task.getResult() != null){
+//                                    name = task.getResult().getString("name");
+//                                    //other stuff
+//                                }else{
+//                                    //deal with error
+//                                }
+//                            });
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        username = user.getDisplayName();
                         progressDialog.dismiss();
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString(Email,email);
                         editor.putString(Password,password);
+                        editor.putString(Name,username);
                         editor.apply();
-                        Toast.makeText(LoginActivity.this,"Login Successful",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this,username,Toast.LENGTH_SHORT).show();
                         sendUserToNextActivity();
-                    }else{
-                        progressDialog.dismiss();
-                        Toast.makeText(LoginActivity.this, ""+task.getException(), Toast.LENGTH_SHORT).show();
-                    }
                 }
             });
         }
@@ -110,6 +128,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void sendUserToNextActivity() {
         Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+        intent.putExtra("name",username);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }

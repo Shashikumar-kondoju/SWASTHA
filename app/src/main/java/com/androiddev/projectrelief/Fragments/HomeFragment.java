@@ -1,5 +1,11 @@
 package com.androiddev.projectrelief.Fragments;
 
+import static android.content.Context.MODE_PRIVATE;
+import static android.content.Intent.getIntent;
+
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -13,6 +19,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.androiddev.projectrelief.Adapters.MusicVerticalAdapter;
 import com.androiddev.projectrelief.Adapters.NestedRVAdapter;
@@ -53,6 +60,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     MusicVerticalAdapter musicAdapter2;
     LinearLayoutManager musicLayoutManager2;
     FirebaseRecyclerOptions<songs> options2;
+    TextView nameView;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -97,6 +105,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        SharedPreferences prefs = getActivity().getSharedPreferences("login",Context.MODE_PRIVATE);
+        String name = prefs.getString("name","");
         recyclerView1 = view.findViewById(R.id.dailyyoga);
         ydLayoutManager1 = new LinearLayoutManager(getActivity());
         ydLayoutManager1.setOrientation(RecyclerView.HORIZONTAL);
@@ -120,6 +130,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         musicAdapter2 = new MusicVerticalAdapter(options2,getContext());
         recyclerView2.setAdapter(musicAdapter2);
         musicAdapter2.notifyDataSetChanged();
+
+//        String name = getActivity().getIntent().getStringExtra("name");
+        nameView = view.findViewById(R.id.add_text);
+        nameView.setText(name);
 
 
         yogaCard = (CardView) view.findViewById(R.id.yoga);

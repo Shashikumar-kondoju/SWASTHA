@@ -16,6 +16,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         );
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+        actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.black));
 
         final MenuItem[] prevItemChecked = {null};
 
@@ -87,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                             .commit();
                     if(getSupportActionBar()!=null){
                         getSupportActionBar().setTitle("Yoga Information");
+                        toolbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#00FFFFFF")));
                     }
                     drawerLayout.closeDrawers();
                 }else if(item.getItemId()==R.id.nav_music){
@@ -95,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
                             .commit();
                     if(getSupportActionBar()!=null){
                         getSupportActionBar().setTitle("Healing Music");
+                        toolbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#00FFFFFF")));
                     }
                     drawerLayout.closeDrawers();
                 }else if(item.getItemId()==R.id.nav_about_us){
@@ -103,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
                             .commit();
                     if(getSupportActionBar()!=null){
                         getSupportActionBar().setTitle("About Us");
+                        toolbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#00FFFFFF")));
                     }
                     drawerLayout.closeDrawers();
                 }else if(item.getItemId()==R.id.log_out){
@@ -143,8 +149,10 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frame,new HomeFragment())
                 .commit();
+
         if(getSupportActionBar()!=null){
-            getSupportActionBar().setTitle("Home");
+            getSupportActionBar().setTitle(null);
+            toolbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5e4386")));
         }
         navigationView.setCheckedItem(R.id.nav_home);
     }
@@ -160,8 +168,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void setUpToolBar(){
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(null);
         if(getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Title");
+//            getSupportActionBar().setTitle("Title");
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }

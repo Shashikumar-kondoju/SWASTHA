@@ -14,5 +14,5 @@
     <color name="textColor">#232F34</color>
     <color name="backgroundPlayer">#E0E0E0</color>
     <color name="colorPrimaryDark">#4A6572</color>
-    <color name="colorPrimary">#344955</color>
+    <color name="colorPrimary">#FF000000</color>
 </resources>

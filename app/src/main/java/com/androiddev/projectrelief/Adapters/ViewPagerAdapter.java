@@ -11,6 +11,7 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.androiddev.projectrelief.R;
 import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -44,6 +45,7 @@ public class ViewPagerAdapter extends PagerAdapter {
                 .asBitmap()
                 .load(images.get(position))
                 .into(imageView);
+//        Picasso.get().load(images.get(position)).into(imageView);
         container.addView(view,0);
         return view;
     }

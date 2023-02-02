@@ -44,13 +44,16 @@ public class MusicVerticalAdapter extends FirebaseRecyclerAdapter<songs,MusicVer
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull songs model) {
         Glide.with(holder.img.getContext()).load(model.getImgLink()).into(holder.img);
+        holder.songName.setText(model.getSongName());
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView img;
+        private TextView songName;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.musicimg);
+            songName = itemView.findViewById(R.id.song_daily);
         }
     }
 }

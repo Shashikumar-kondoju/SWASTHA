@@ -17,10 +17,19 @@ import android.widget.Toast;
 
 import com.androiddev.projectrelief.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -29,15 +38,19 @@ public class RegistrationActivity extends AppCompatActivity {
     Button btnRegister;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     ProgressDialog progressDialog;
+    String username;
 
     FirebaseAuth mAuth;
     FirebaseUser mUser;
+    FirebaseFirestore firebaseFirestore;
+    CollectionReference reference;
 
     SharedPreferences sharedPreferences;
 
     public static final String fileName = "login";
     public static final String Email = "email";
     public static final String Password = "password";
+    public static final String Name = "name";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +66,7 @@ public class RegistrationActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
+        firebaseFirestore = FirebaseFirestore.getInstance();
         sharedPreferences = getSharedPreferences(fileName, Context.MODE_PRIVATE);
 
         haveAcc.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +88,7 @@ public class RegistrationActivity extends AppCompatActivity {
         String email = inputEmail.getText().toString();
         String password = inputPass.getText().toString();
         String confirmPassword = confirmPass.getText().toString();
+        username = name.getText().toString();
 
         if(!email.matches(emailPattern)){
             inputEmail.setError("Enter correct email!");
@@ -87,21 +102,41 @@ public class RegistrationActivity extends AppCompatActivity {
             progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.show();
 
-            mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            mAuth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>(){
+
                 @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
-                        progressDialog.dismiss();
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString(Email,email);
-                        editor.putString(Password,password);
-                        editor.apply();
-                        Toast.makeText(RegistrationActivity.this,"Registration Successful",Toast.LENGTH_SHORT).show();
-                        sendUserToNextActivity();
-                    }else{
-                        progressDialog.dismiss();
-                        Toast.makeText(RegistrationActivity.this, ""+task.getException(), Toast.LENGTH_SHORT).show();
-                    }
+                public void onSuccess(AuthResult authResult) {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString(Email,email);
+                    editor.putString(Password,password);
+                    editor.putString(Name,username);
+                    editor.apply();
+                    FirebaseUser user = authResult.getUser();
+                    UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
+                            .setDisplayName(username)
+                                    .build();
+                    user.updateProfile(profileChangeRequest).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Toast.makeText(RegistrationActivity.this,"Registration Successful",Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
+                            progressDialog.setMessage("saving user data...");
+                            finish();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(RegistrationActivity.this,"Failed to save user data",Toast.LENGTH_SHORT).show();
+                            e.printStackTrace();
+                        }
+                    });
+                    sendUserToNextActivity();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(RegistrationActivity.this,"Registration Failed",Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -109,6 +144,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private void sendUserToNextActivity() {
         Intent intent = new Intent(RegistrationActivity.this,MainActivity.class);
+        intent.putExtra("name",username);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }

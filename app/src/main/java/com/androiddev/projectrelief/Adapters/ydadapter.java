@@ -43,13 +43,16 @@ public class ydadapter extends FirebaseRecyclerAdapter<ydmodel, ydadapter.ViewHo
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull ydmodel model) {
         Glide.with(holder.img.getContext()).load(model.getLink()).into(holder.img);
+        holder.txt.setText(model.getName());
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView img;
+        private TextView txt;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.yogaimg);
+            txt = itemView.findViewById(R.id.img_daily);
         }
     }
 }
