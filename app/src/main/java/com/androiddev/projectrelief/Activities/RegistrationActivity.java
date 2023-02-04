@@ -147,5 +147,6 @@ public class RegistrationActivity extends AppCompatActivity {
         intent.putExtra("name",username);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+        finishAffinity();
     }
 }

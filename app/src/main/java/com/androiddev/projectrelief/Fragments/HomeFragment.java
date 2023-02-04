@@ -12,6 +12,8 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -21,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.androiddev.projectrelief.Activities.MainActivity;
 import com.androiddev.projectrelief.Adapters.MusicVerticalAdapter;
 import com.androiddev.projectrelief.Adapters.NestedRVAdapter;
 import com.androiddev.projectrelief.Adapters.ViewPagerAdapter;
@@ -46,7 +49,7 @@ import java.util.zip.Inflater;
  * create an instance of this fragment.
  */
 
-public class HomeFragment extends Fragment implements View.OnClickListener {
+public class HomeFragment extends Fragment{
 
     CardView yogaCard, musicCard;
     ViewPager viewPager;
@@ -125,7 +128,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         recyclerView2.setLayoutManager(musicLayoutManager2);
         options2 =
                 new FirebaseRecyclerOptions.Builder<songs>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("songs"), songs.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Recently added music"), songs.class)
                         .build();
         musicAdapter2 = new MusicVerticalAdapter(options2,getContext());
         recyclerView2.setAdapter(musicAdapter2);
@@ -139,8 +142,25 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         yogaCard = (CardView) view.findViewById(R.id.yoga);
         musicCard = (CardView) view.findViewById(R.id.music_card);
 
-        yogaCard.setOnClickListener(this);
-        musicCard.setOnClickListener(this);
+        yogaCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.frame,new YogaCategoriesFragment(),"YogaFragment")
+                        .addToBackStack("YogaFragment")
+                        .commit();
+            }
+        });
+
+        musicCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.frame,new HealingMusicFragment(),"MusicFragment")
+                        .addToBackStack("MusicFragment")
+                        .commit();
+            }
+        });
 
         viewPager = view.findViewById(R.id.viewPager);
         images.add(R.drawable.quote_1);
@@ -152,23 +172,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         viewPager.setPadding(20,0,20,0);
 
         return view;
-    }
-
-    @Override
-    public void onClick(View view) {
-        Fragment fragment;
-        switch (view.getId()){
-            case R.id.yoga: fragment = new YogaCategoriesFragment();
-                break;
-            case R.id.music_card: fragment = new HealingMusicFragment();
-                break;
-            default: fragment = new HomeFragment();
-                break;
-        }
-        getFragmentManager().beginTransaction()
-                .replace(R.id.frame,fragment)
-                .addToBackStack(null)
-                .commit();
     }
 
     @Override
@@ -184,4 +187,5 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         ydAdapter1.stopListening();
         musicAdapter2.stopListening();
     }
+
 }

@@ -94,11 +94,4 @@ public class YogaInfoFragment extends Fragment {
         });
         return view;
     }
-    public void onBackPressed(){
-        AppCompatActivity activity = (AppCompatActivity)getContext();
-        assert activity != null;
-        activity.getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame, new YogaCategoriesFragment())
-                .commit();
-    }
 }

@@ -83,6 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                 preformLogin();
             }
         });
+
     }
 
     private void preformLogin() {
@@ -123,6 +124,7 @@ public class LoginActivity extends AppCompatActivity {
                         sendUserToNextActivity();
                 }
             });
+
         }
     }
 

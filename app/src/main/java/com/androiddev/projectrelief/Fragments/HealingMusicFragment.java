@@ -73,13 +73,6 @@ public class HealingMusicFragment extends Fragment  {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // This callback will only be called when MyFragment is at least Started.
-        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
-            @Override
-            public void handleOnBackPressed() {
-                // Handle the back button event
-            }
-        };
-        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
 
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
@@ -122,7 +115,8 @@ public class HealingMusicFragment extends Fragment  {
                 fragment.setArguments(bundle);
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frame,fragment);
+                fragmentTransaction.replace(R.id.frame,fragment,"MusicPlayerFragment");
+                fragmentTransaction.addToBackStack("MusicPlayerFragment");
                 fragmentTransaction.commit();
             }
         });

@@ -54,15 +54,6 @@ public class YogaCategoriesFragment extends Fragment implements YogaCategoriesAd
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
-            @Override
-            public void handleOnBackPressed() {
-                // Handle the back button event
-            }
-        };
-        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
-
-
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -74,6 +65,7 @@ public class YogaCategoriesFragment extends Fragment implements YogaCategoriesAd
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_yoga, container, false);
+
 
         categories = new ArrayList<>();
         categories.add(new model("Basic Exercises",R.drawable.exercise));
@@ -98,7 +90,8 @@ public class YogaCategoriesFragment extends Fragment implements YogaCategoriesAd
         fragment.setArguments(bundle);
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame,fragment);
+        fragmentTransaction.replace(R.id.frame,fragment,"NestedRVFragment");
+        fragmentTransaction.addToBackStack("NestedRVFragment");
         fragmentTransaction.commit();
     }
 }

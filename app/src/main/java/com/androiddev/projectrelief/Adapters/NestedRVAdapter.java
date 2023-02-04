@@ -40,7 +40,7 @@ public class NestedRVAdapter extends FirebaseRecyclerAdapter<NestedModel, Nested
                 YogaInfoFragment yogaInfoFragment = new YogaInfoFragment();
                 yogaInfoFragment.setArguments(bundle);
                 AppCompatActivity activity = (AppCompatActivity)view.getContext();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,yogaInfoFragment).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,yogaInfoFragment,"YogaInfoFragment").addToBackStack("YogaInfoFragment").commit();
             }
         });
     }

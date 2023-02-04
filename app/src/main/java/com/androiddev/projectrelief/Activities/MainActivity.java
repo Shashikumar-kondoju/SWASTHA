@@ -11,6 +11,8 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -58,7 +60,11 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawerLayout);
 
         setUpToolBar();
-        openHome();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.frame,new HomeFragment(),"HomeFragment")
+                .commit();
+        getSupportActionBar().setTitle(null);
+        toolbar.setBackgroundColor(Color.parseColor("#5e4386"));
 
         actionBarDrawerToggle = new ActionBarDrawerToggle(
                 MainActivity.this,
@@ -71,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
         actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.black));
 
         final MenuItem[] prevItemChecked = {null};
+        final Fragment[] fragment = {null};
+        navigationView.setCheckedItem(R.id.nav_home);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -82,34 +90,40 @@ public class MainActivity extends AppCompatActivity {
                 item.setChecked(true);
                 prevItemChecked[0] = item;
                 if(item.getItemId()==R.id.nav_home){
-                    openHome();
+                    fragment[0] = new HomeFragment();
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.frame,new HomeFragment(),"HomeFragment")
+                            .addToBackStack("HomeFragment")
+                            .commit();
+                    getSupportActionBar().setTitle(null);
+                    toolbar.setBackgroundColor(Color.parseColor("#5e4386"));
                     drawerLayout.closeDrawers();
                 }else if(item.getItemId()==R.id.nav_yoga){
+                    fragment[0] = new YogaCategoriesFragment();
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.frame,new YogaCategoriesFragment())
+                            .replace(R.id.frame,new YogaCategoriesFragment(),"YogaFragment")
+                            .addToBackStack("YogaFragment")
                             .commit();
-                    if(getSupportActionBar()!=null){
-                        getSupportActionBar().setTitle("Yoga Information");
-                        toolbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#00FFFFFF")));
-                    }
+                    getSupportActionBar().setTitle("Yoga Information");
+                    toolbar.setBackgroundColor(Color.parseColor("#00FFFFFF"));
                     drawerLayout.closeDrawers();
                 }else if(item.getItemId()==R.id.nav_music){
+                    fragment[0] = new HealingMusicFragment();
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.frame,new HealingMusicFragment())
+                            .replace(R.id.frame,new HealingMusicFragment(),"MusicFragment")
+                            .addToBackStack("MusicFragment")
                             .commit();
-                    if(getSupportActionBar()!=null){
-                        getSupportActionBar().setTitle("Healing Music");
-                        toolbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#00FFFFFF")));
-                    }
+                    getSupportActionBar().setTitle("Healing Music");
+                    toolbar.setBackgroundColor(Color.parseColor("#00FFFFFF"));
                     drawerLayout.closeDrawers();
                 }else if(item.getItemId()==R.id.nav_about_us){
+                    fragment[0] = new AboutUsFragment();
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.frame,new AboutUsFragment())
+                            .replace(R.id.frame,new AboutUsFragment(),"AboutUsFragment")
+                            .addToBackStack("AboutUsFragment")
                             .commit();
-                    if(getSupportActionBar()!=null){
-                        getSupportActionBar().setTitle("About Us");
-                        toolbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#00FFFFFF")));
-                    }
+                    getSupportActionBar().setTitle("About Us");
+                    toolbar.setBackgroundColor(Color.parseColor("#00FFFFFF"));
                     drawerLayout.closeDrawers();
                 }else if(item.getItemId()==R.id.log_out){
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -143,18 +157,29 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-    }
-    public void openHome(){
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame,new HomeFragment())
-                .commit();
-
-        if(getSupportActionBar()!=null){
-            getSupportActionBar().setTitle(null);
-            toolbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5e4386")));
-        }
-        navigationView.setCheckedItem(R.id.nav_home);
+        getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.frame);
+                if (fragment.getTag() == "HomeFragment") {
+                    toolbar.setTitle(null);
+                    toolbar.setBackgroundColor(Color.parseColor("#5e4386"));
+                    navigationView.setCheckedItem(R.id.nav_home);
+                }else if(fragment.getTag() == "YogaFragment"){
+                    getSupportActionBar().setTitle("Yoga Information");
+                    toolbar.setBackgroundColor(Color.parseColor("#00FFFFFF"));
+                    navigationView.setCheckedItem(R.id.nav_yoga);
+                }else if(fragment.getTag()=="MusicFragment"){
+                    getSupportActionBar().setTitle("Healing Music");
+                    toolbar.setBackgroundColor(Color.parseColor("#00FFFFFF"));
+                    navigationView.setCheckedItem(R.id.nav_music);
+                }else if(fragment.getTag()=="AboutUsFragment") {
+                    getSupportActionBar().setTitle("About Us");
+                    toolbar.setBackgroundColor(Color.parseColor("#00FFFFFF"));
+                    navigationView.setCheckedItem(R.id.nav_about_us);
+                }
+            }
+        });
     }
 
     @Override
@@ -166,6 +191,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     public void setUpToolBar(){
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(null);
@@ -176,13 +202,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onBackPressed(){
-        Fragment frag = getSupportFragmentManager().findFragmentById(R.id.frame);
-        if(frag.equals(HomeFragment.class)) {
-            super.onBackPressed();
-        }else{
-            openHome();
-        }
-    }
 }
