@@ -272,15 +272,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:textSize="16sp"
             android:fontFamily="@font/baloo_tammudu"
-            android:text="Quotes of the day"
+            android:text="&quot;that&quot; dude once said"
             android:textColor="@color/design_default_color_on_secondary"
-            app:layout_constraintVertical_bias=".01"
-            app:layout_constraintTop_toBottomOf="@id/yoga"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/yoga"
+            app:layout_constraintVertical_bias=".01" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"

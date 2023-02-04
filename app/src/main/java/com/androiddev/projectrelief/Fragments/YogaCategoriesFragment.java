@@ -76,9 +76,9 @@ public class YogaCategoriesFragment extends Fragment implements YogaCategoriesAd
         View view = inflater.inflate(R.layout.fragment_yoga, container, false);
 
         categories = new ArrayList<>();
-        categories.add(new model("Basic Exercises",R.drawable.basic));
+        categories.add(new model("Basic Exercises",R.drawable.exercise));
         categories.add(new model("Health Related",R.drawable.health));
-        categories.add(new model("Stress and Anxiety",R.drawable.stress));
+        categories.add(new model("Stress and Anxiety",R.drawable.stressb));
 
         rec_view = view.findViewById(R.id.rec_view);
         layoutManager= new LinearLayoutManager(getActivity());
