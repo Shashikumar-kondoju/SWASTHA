@@ -7,11 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -30,7 +30,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class HealingMusicFragment extends Fragment  {
+public class GenreMusicFragment extends Fragment  {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,12 +41,8 @@ public class HealingMusicFragment extends Fragment  {
     private String mParam1;
     private String mParam2;
 
-    RecyclerView recyclerView;
-    music_adapter music_adapter;
-    LinearLayoutManager musiclayoutmanager;
-    FirebaseRecyclerOptions<songs> options;
 
-    public HealingMusicFragment() {
+    public GenreMusicFragment() {
         // Required empty public constructor
     }
 
@@ -79,96 +75,59 @@ public class HealingMusicFragment extends Fragment  {
         }
     }
 
+    TextView genre;
+    RecyclerView recyclerView;
+    FirebaseRecyclerOptions<songs> options;
+    LinearLayoutManager musiclayoutmanager;
+    music_adapter music_adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_healing_music, container, false);
-        recyclerView = (RecyclerView) view.findViewById(R.id.songview);
+        View view = inflater.inflate(R.layout.fragment_genre, container, false);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        genre = view.findViewById(R.id.textView13);
+        String name;
+        Bundle bundle = this.getArguments();
+
+        name = (String)bundle.getString("name");
+        genre.setText(name);
+
         musiclayoutmanager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(musiclayoutmanager);
 
-        CardView peaceCat = view.findViewById(R.id.peace);
-        CardView natureCat = view.findViewById(R.id.nature);
-        CardView instrumentalCat = view.findViewById(R.id.instrumental);
-        CardView spiritualCat = view.findViewById(R.id.spiritual);
-        CardView danceHardCat = view.findViewById(R.id.dance_hard);
+        if(name=="Instrumental Music."){
+            options =
+                    new FirebaseRecyclerOptions.Builder<songs>()
+                            .setQuery(FirebaseDatabase.getInstance().getReference().child("INSTRUMENTAL"), songs.class)
+                            .build();
 
-        peaceCat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putString("name","Peace Music.");
-                Fragment fragment = new GenreMusicFragment();
-                fragment.setArguments(bundle);
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frame,fragment,"peace")
-                        .addToBackStack("peace")
-                        .commit();
-            }
-        });
+        }else if(name.equals("Peace Music.")){
+            options =
+                    new FirebaseRecyclerOptions.Builder<songs>()
+                            .setQuery(FirebaseDatabase.getInstance().getReference().child("PEACE"), songs.class)
+                            .build();
 
-        natureCat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putString("name","Nature Music.");
-                Fragment fragment = new GenreMusicFragment();
-                fragment.setArguments(bundle);
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frame,fragment,"nature")
-                        .addToBackStack("nature")
-                        .commit();
-            }
-        });
+        }else if(name.equals("Spiritual Music.")){
+            options =
+                    new FirebaseRecyclerOptions.Builder<songs>()
+                            .setQuery(FirebaseDatabase.getInstance().getReference().child("SPIRITUAL"), songs.class)
+                            .build();
 
-        instrumentalCat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putString("name","Instrumental Music.");
-                Fragment fragment = new GenreMusicFragment();
-                fragment.setArguments(bundle);
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frame,fragment,"instrument")
-                        .addToBackStack("instrument")
-                        .commit();
-            }
-        });
+        }else if(name.equals("Nature Music.")){
+            options =
+                    new FirebaseRecyclerOptions.Builder<songs>()
+                            .setQuery(FirebaseDatabase.getInstance().getReference().child("NATURE"), songs.class)
+                            .build();
 
-        spiritualCat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putString("name","Spiritual Music.");
-                Fragment fragment = new GenreMusicFragment();
-                fragment.setArguments(bundle);
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frame,fragment,"spiritual")
-                        .addToBackStack("spiritual")
-                        .commit();
-            }
-        });
+        }else if(name.equals("Dance Hard Music.")){
+            options =
+                    new FirebaseRecyclerOptions.Builder<songs>()
+                            .setQuery(FirebaseDatabase.getInstance().getReference().child("DANCE HARD"), songs.class)
+                            .build();
 
-        danceHardCat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putString("name","Dance Hard Music.");
-                Fragment fragment = new GenreMusicFragment();
-                fragment.setArguments(bundle);
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frame,fragment,"dance")
-                        .addToBackStack("dance")
-                        .commit();
-            }
-        });
-
-        options =
-                new FirebaseRecyclerOptions.Builder<songs>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("songs"), songs.class)
-                        .build();
+        }
         music_adapter = new music_adapter(options,getContext());
         recyclerView.setAdapter(music_adapter);
         music_adapter.notifyDataSetChanged();
@@ -194,7 +153,7 @@ public class HealingMusicFragment extends Fragment  {
                 fragmentTransaction.addToBackStack("MusicPlayerFragment");
                 fragmentTransaction.commit();
                 ProgressDialog progressDialog = new ProgressDialog(getContext());
-                progressDialog.setMessage("Pleasant Music Loading...");
+                progressDialog.setMessage(name+"Loading...");
 //                progressDialog.setTitle();
                 progressDialog.setCanceledOnTouchOutside(false);
                 progressDialog.show();

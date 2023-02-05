@@ -1,6 +1,8 @@
 package com.androiddev.projectrelief.Adapters;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +43,18 @@ public class NestedRVAdapter extends FirebaseRecyclerAdapter<NestedModel, Nested
                 yogaInfoFragment.setArguments(bundle);
                 AppCompatActivity activity = (AppCompatActivity)view.getContext();
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,yogaInfoFragment,"YogaInfoFragment").addToBackStack("YogaInfoFragment").commit();
+                ProgressDialog progressDialog = new ProgressDialog(view.getContext());
+                progressDialog.setMessage("Asanas Loading...");
+//                progressDialog.setTitle();
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.show();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressDialog.dismiss();
+                    }
+                },4000);
             }
         });
     }

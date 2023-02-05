@@ -3,6 +3,7 @@ package com.androiddev.projectrelief.Fragments;
 import static android.content.Context.MODE_PRIVATE;
 import static android.content.Intent.getIntent;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -151,6 +153,18 @@ public class HomeFragment extends Fragment{
                         .replace(R.id.frame,new YogaCategoriesFragment(),"YogaFragment")
                         .addToBackStack("YogaFragment")
                         .commit();
+                ProgressDialog progressDialog = new ProgressDialog(getContext());
+                progressDialog.setMessage("Asanas Loading...");
+//                progressDialog.setTitle();
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.show();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressDialog.dismiss();
+                    }
+                },4000);
             }
         });
 
@@ -161,6 +175,18 @@ public class HomeFragment extends Fragment{
                         .replace(R.id.frame,new HealingMusicFragment(),"MusicFragment")
                         .addToBackStack("MusicFragment")
                         .commit();
+                ProgressDialog progressDialog = new ProgressDialog(getContext());
+                progressDialog.setMessage("Healing Music Collection...");
+//                progressDialog.setTitle();
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.show();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressDialog.dismiss();
+                    }
+                },4000);
             }
         });
 

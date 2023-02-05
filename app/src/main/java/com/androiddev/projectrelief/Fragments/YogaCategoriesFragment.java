@@ -2,6 +2,7 @@ package com.androiddev.projectrelief.Fragments;
 
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -11,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -93,5 +95,17 @@ public class YogaCategoriesFragment extends Fragment implements YogaCategoriesAd
         fragmentTransaction.replace(R.id.frame,fragment,"NestedRVFragment");
         fragmentTransaction.addToBackStack("NestedRVFragment");
         fragmentTransaction.commit();
+        ProgressDialog progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Asanas Loading...");
+//                progressDialog.setTitle();
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.dismiss();
+            }
+        },4000);
     }
 }
