@@ -3,7 +3,7 @@
     android:layout_width="120dp"
     android:layout_height="160dp"
     app:cardCornerRadius="10dp"
-    android:foreground="?android:attr/selectableItemBackground"
+    android:foreground="?attr/selectableItemBackgroundBorderless"
     android:clickable="true"
     android:layout_marginLeft="5dp"
     android:layout_marginBottom="10dp"
