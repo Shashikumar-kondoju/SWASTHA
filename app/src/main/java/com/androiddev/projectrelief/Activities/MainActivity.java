@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
                             .commit();
                     getSupportActionBar().setTitle(null);
                     toolbar.setBackgroundColor(Color.parseColor("#5e4386"));
+                    actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.black));
                     drawerLayout.closeDrawers();
                 }else if(item.getItemId()==R.id.nav_yoga){
                     fragment[0] = new YogaCategoriesFragment();
@@ -106,7 +107,9 @@ public class MainActivity extends AppCompatActivity {
                             .addToBackStack("YogaFragment")
                             .commit();
                     getSupportActionBar().setTitle("Yoga Information");
+                    toolbar.setTitleTextColor(getResources().getColor(R.color.black));
                     toolbar.setBackgroundColor(Color.parseColor("#00FFFFFF"));
+                    actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.black));
                     drawerLayout.closeDrawers();
                 }else if(item.getItemId()==R.id.nav_music){
                     fragment[0] = new HealingMusicFragment();
@@ -115,7 +118,9 @@ public class MainActivity extends AppCompatActivity {
                             .addToBackStack("MusicFragment")
                             .commit();
                     getSupportActionBar().setTitle("Healing Music");
-                    toolbar.setBackgroundColor(Color.parseColor("#00FFFFFF"));
+                    toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+                    toolbar.setBackgroundColor(Color.parseColor("#000000"));
+                    actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
                     drawerLayout.closeDrawers();
                 }else if(item.getItemId()==R.id.nav_about_us){
                     fragment[0] = new AboutUsFragment();
@@ -124,7 +129,9 @@ public class MainActivity extends AppCompatActivity {
                             .addToBackStack("AboutUsFragment")
                             .commit();
                     getSupportActionBar().setTitle("About Us");
+                    toolbar.setTitleTextColor(getResources().getColor(R.color.black));
                     toolbar.setBackgroundColor(Color.parseColor("#00FFFFFF"));
+                    actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.black));
                     drawerLayout.closeDrawers();
                 }else if(item.getItemId()==R.id.log_out){
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -166,18 +173,25 @@ public class MainActivity extends AppCompatActivity {
                     toolbar.setTitle(null);
                     toolbar.setBackgroundColor(Color.parseColor("#5e4386"));
                     navigationView.setCheckedItem(R.id.nav_home);
+                    actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.black));
                 }else if(fragment.getTag() == "YogaFragment"){
                     getSupportActionBar().setTitle("Yoga Information");
                     toolbar.setBackgroundColor(Color.parseColor("#00FFFFFF"));
+                    toolbar.setTitleTextColor(getResources().getColor(R.color.black));
                     navigationView.setCheckedItem(R.id.nav_yoga);
+                    actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.black));
                 }else if(fragment.getTag()=="MusicFragment"){
                     getSupportActionBar().setTitle("Healing Music");
-                    toolbar.setBackgroundColor(Color.parseColor("#00FFFFFF"));
+                    toolbar.setBackgroundColor(Color.parseColor("#000000"));
+                    toolbar.setTitleTextColor(getResources().getColor(R.color.white));
                     navigationView.setCheckedItem(R.id.nav_music);
+                    actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
                 }else if(fragment.getTag()=="AboutUsFragment") {
                     getSupportActionBar().setTitle("About Us");
                     toolbar.setBackgroundColor(Color.parseColor("#00FFFFFF"));
+                    toolbar.setTitleTextColor(getResources().getColor(R.color.black));
                     navigationView.setCheckedItem(R.id.nav_about_us);
+                    actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.black));
                 }
             }
         });
