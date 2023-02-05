@@ -120,6 +120,7 @@ public class HomeFragment extends Fragment{
                         .build();
         ydAdapter1 = new ydadapter(options1,getContext());
         recyclerView1.setAdapter(ydAdapter1);
+//        recyclerView2.stopScroll();
         ydAdapter1.notifyDataSetChanged();
 
         recyclerView2 = view.findViewById(R.id.music_recent);
@@ -132,6 +133,7 @@ public class HomeFragment extends Fragment{
                         .build();
         musicAdapter2 = new MusicVerticalAdapter(options2,getContext());
         recyclerView2.setAdapter(musicAdapter2);
+//        recyclerView2.stopScroll();
         musicAdapter2.notifyDataSetChanged();
 
 //        String name = getActivity().getIntent().getStringExtra("name");
