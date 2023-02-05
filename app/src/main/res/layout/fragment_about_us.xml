@@ -67,9 +67,9 @@
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="sans-serif-light"
                 android:text="SWASTHA \nstarted with an idea to acknowledge people about yoga asanas and their benefits.\n\nFurther brainstorming evolved this idea into an application that should be known for its information on healthy lifestyle through yoga and spreading peace.\n\nThis made us start working, and here we are with our application.\n\nWe are a group of four friends who just wanted to do something exciting (which also turned to be helpful for those using this app) as part of their career growth.\n\nAfter months of information gathering, app development finally we crossed the finish line.\n\nWe are not willing to be a champion with this app but we are treating it as a starting point of our journey to many more.\n\nSomeday again we might cross our paths.\n\nThat day we all know where it all began.\n\nEagerly WORKING to witness that moment Until then we are here to serve you with SWASTHA."
-                android:textColor="@color/white"
-                android:textStyle="normal"
-                android:textSize="16sp" />
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="normal" />
         </ScrollView>
 
         <TextView
@@ -203,7 +203,7 @@
             android:layout_marginTop="4dp"
             android:fontFamily="@font/anton"
             android:text="Swastha. \nTo serve you."
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
