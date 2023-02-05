@@ -76,10 +76,6 @@ public class NestedRVFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_nested_r_v, container, false);
 
-
-
-
-
         String str;
         Bundle bundle = this.getArguments();
         str = (String)bundle.getString("key");

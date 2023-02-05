@@ -68,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
         if(sharedPreferences.contains(Email)){
             Intent intent = new Intent(LoginActivity.this,MainActivity.class);
             startActivity(intent);
+            finish();
         }
 
         newAcc.setOnClickListener(new View.OnClickListener() {
