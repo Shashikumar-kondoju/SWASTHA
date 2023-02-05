@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 prevItemChecked[0] = item;
                 if(item.getItemId()==R.id.nav_home){
                     fragment[0] = new HomeFragment();
+                    getSupportFragmentManager().popBackStack();
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.frame,new HomeFragment(),"HomeFragment")
                             .addToBackStack("HomeFragment")
