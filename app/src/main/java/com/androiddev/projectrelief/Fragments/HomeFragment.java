@@ -29,6 +29,7 @@ import com.androiddev.projectrelief.Activities.MainActivity;
 import com.androiddev.projectrelief.Adapters.MusicVerticalAdapter;
 import com.androiddev.projectrelief.Adapters.NestedRVAdapter;
 import com.androiddev.projectrelief.Adapters.ViewPagerAdapter;
+import com.androiddev.projectrelief.Adapters.music_adapter;
 import com.androiddev.projectrelief.Adapters.ydadapter;
 import com.androiddev.projectrelief.Models.NestedModel;
 import com.androiddev.projectrelief.Models.songs;
@@ -41,6 +42,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.Inflater;
@@ -60,7 +62,7 @@ public class HomeFragment extends Fragment{
     private RecyclerView recyclerView1;
     ydadapter ydAdapter1;
     LinearLayoutManager ydLayoutManager1;
-    FirebaseRecyclerOptions<ydmodel> options1;
+    FirebaseRecyclerOptions<NestedModel> options1;
     private RecyclerView recyclerView2;
     MusicVerticalAdapter musicAdapter2;
     LinearLayoutManager musicLayoutManager2;
@@ -117,8 +119,8 @@ public class HomeFragment extends Fragment{
         ydLayoutManager1.setOrientation(RecyclerView.HORIZONTAL);
         recyclerView1.setLayoutManager(ydLayoutManager1);
         options1 =
-                new FirebaseRecyclerOptions.Builder<ydmodel>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("dailyoga"), ydmodel.class)
+                new FirebaseRecyclerOptions.Builder<NestedModel>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("dailyoga"), NestedModel.class)
                         .build();
         ydAdapter1 = new ydadapter(options1,getContext());
         recyclerView1.setAdapter(ydAdapter1);
@@ -131,12 +133,48 @@ public class HomeFragment extends Fragment{
         recyclerView2.setLayoutManager(musicLayoutManager2);
         options2 =
                 new FirebaseRecyclerOptions.Builder<songs>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Recently added music"), songs.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("songs"), songs.class)
                         .build();
         musicAdapter2 = new MusicVerticalAdapter(options2,getContext());
         recyclerView2.setAdapter(musicAdapter2);
 //        recyclerView2.stopScroll();
         musicAdapter2.notifyDataSetChanged();
+        musicAdapter2.setOnItemClickListener(new MusicVerticalAdapter.onRecyclerViewItemClickListener() {
+            @Override
+            public void onItemClickListener(View view, int position, FirebaseRecyclerOptions<songs> options) {
+                Bundle bundle = new Bundle();
+//                bundle.putString("songName",model.getSongName());
+//                bundle.putString("songLink",model.getSongLink());
+//                bundle.putString("imgLink",model.getImgLink());
+//                bundle.putString("songDuration",model.getSongDuration());
+//                bundle.putString("description",model.getDescription());
+                ArrayList<songs> songsL = new ArrayList<>();
+                for(int i=0;i<musicAdapter2.getItemCount();i++){
+                    songsL.add(options.getSnapshots().get(i));
+                }
+                bundle.putSerializable("LIST",(Serializable) songsL);
+                Fragment fragment = new MusicPlayerFragment();
+                fragment.setArguments(bundle);
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frame,fragment,"MusicPlayerFragment");
+                fragmentTransaction.addToBackStack("MusicPlayerFragment");
+                fragmentTransaction.commit();
+                ProgressDialog progressDialog = new ProgressDialog(getContext());
+                progressDialog.setMessage(name+"Loading...");
+//                progressDialog.setTitle();
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.show();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressDialog.dismiss();
+                    }
+                },4000);
+            }
+        });
+
 
 //        String name = getActivity().getIntent().getStringExtra("name");
         nameView = view.findViewById(R.id.add_text);
